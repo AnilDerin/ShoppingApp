@@ -15,13 +15,14 @@ class OnboardContainerViewController: UIViewController {
             
         }
     }
+    let skipButton = UIButton(type: .system)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let page1 = ViewController1()
-        let page2 = ViewController2()
-        let page3 = ViewController3()
+        let page1 = OnboardViewController(heroImageName: "bags", titleText: "Welcome", descriptonText: "Swift Shop is an app that lets users to buy the items they want.")
+        let page2 = OnboardViewController(heroImageName: "eCommerce", titleText: "E-Commerce", descriptonText: "Swift Shop is an app that lets users to buy the items they want Ecommerce.")
+        let page3 = OnboardViewController(heroImageName: "cart", titleText: "Cart", descriptonText: "Swift Shop is an app that lets users to buy the items they want Cart.")
         
         pages.append(page1)
         pages.append(page2)
@@ -48,6 +49,7 @@ class OnboardContainerViewController: UIViewController {
         pageViewController.dataSource = self
         
         configurePageViewController()
+        configureSkipButton()
         
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
@@ -61,6 +63,17 @@ class OnboardContainerViewController: UIViewController {
             make.leading.equalTo(view.snp.leading)
             make.trailing.equalTo(view.snp.trailing)
             make.bottom.equalTo(view.snp.bottom)
+        }
+    }
+    
+    private func configureSkipButton(){
+        view.addSubview(skipButton)
+        
+        skipButton.setTitle("Skip", for: .normal)
+        
+        skipButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.trailing.equalTo(view.snp.trailing).offset(-18.0)
         }
     }
     
@@ -98,24 +111,3 @@ extension OnboardContainerViewController: UIPageViewControllerDataSource {
     }
 }
 
-// MARK: - View Controllers
-class ViewController1: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemRed
-    }
-}
-
-class ViewController2: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
-    }
-}
-
-class ViewController3: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBlue
-    }
-}

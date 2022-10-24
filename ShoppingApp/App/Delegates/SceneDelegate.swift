@@ -54,12 +54,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // View Controllers
         let splashViewController = SplashViewController()
-        let onboardViewController = OnboardViewController()
         
         // Navigation Controllers
         let splashNavigationController = UINavigationController(rootViewController: splashViewController)
-        
-        let onboardNavigationController = UINavigationController(rootViewController: onboardViewController)
         
         window.rootViewController = splashNavigationController
                 window.makeKeyAndVisible()

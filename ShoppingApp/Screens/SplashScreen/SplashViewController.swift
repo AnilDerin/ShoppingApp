@@ -26,7 +26,7 @@ class SplashViewController: UIViewController {
         
         // Waits 2 seconds and goes to home screen
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
-            let onboardVC = OnboardViewController()
+            let onboardVC = OnboardContainerViewController()
             self.navigationController?.setViewControllers([onboardVC], animated: true)
             
             self.activityView?.stopAnimating()
