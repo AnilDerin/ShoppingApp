@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFD82906A19F003C6645 /* SplashViewController.swift */; };
 		2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359629069CDF0068B1BF /* AppDelegate.swift */; };
 		2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359829069CDF0068B1BF /* SceneDelegate.swift */; };
-		2CC5359B29069CDF0068B1BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359A29069CDF0068B1BF /* ViewController.swift */; };
+		2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359A29069CDF0068B1BF /* OnboardViewController.swift */; };
 		2CC535A029069CDF0068B1BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5359F29069CDF0068B1BF /* Assets.xcassets */; };
 		2CC535A329069CDF0068B1BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC535A129069CDF0068B1BF /* LaunchScreen.storyboard */; };
 		61140AAC4D82021FAB9E5FB1 /* Pods_ShoppingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0595C361405B7674CABC0B35 /* Pods_ShoppingApp.framework */; };
@@ -19,10 +20,11 @@
 		011AB57ECB97CDCA2AC0EFAF /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		0595C361405B7674CABC0B35 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF7BA948151F2382900042B /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2C5BEFD82906A19F003C6645 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2CC5359329069CDF0068B1BF /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC5359629069CDF0068B1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC5359829069CDF0068B1BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CC5359A29069CDF0068B1BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CC5359A29069CDF0068B1BF /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		2CC5359F29069CDF0068B1BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC535A229069CDF0068B1BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC535A429069CDF0068B1BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +42,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C5BEFD72906A189003C6645 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2C5BEFD82906A19F003C6645 /* SplashViewController.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		2C5BEFDA2906AB62003C6645 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2CC5359629069CDF0068B1BF /* AppDelegate.swift */,
+				2CC5359829069CDF0068B1BF /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		2C5BEFDB2906AB6A003C6645 /* OnboardingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2CC5359A29069CDF0068B1BF /* OnboardViewController.swift */,
+			);
+			path = OnboardingScreen;
+			sourceTree = "<group>";
+		};
+		2C5BEFDC2906ABC7003C6645 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				2CC5359F29069CDF0068B1BF /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		2C5BEFDD2906ABCD003C6645 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CC535A129069CDF0068B1BF /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C5BEFDE2906ABD4003C6645 /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				2CC535A429069CDF0068B1BF /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
 		2CC5358A29069CDF0068B1BF = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +114,6 @@
 			children = (
 				2CC535AB29069F890068B1BF /* Screens */,
 				2CC535AA29069F860068B1BF /* App */,
-				2CC5359629069CDF0068B1BF /* AppDelegate.swift */,
-				2CC5359829069CDF0068B1BF /* SceneDelegate.swift */,
-				2CC5359A29069CDF0068B1BF /* ViewController.swift */,
-				2CC5359F29069CDF0068B1BF /* Assets.xcassets */,
-				2CC535A129069CDF0068B1BF /* LaunchScreen.storyboard */,
-				2CC535A429069CDF0068B1BF /* Info.plist */,
 			);
 			path = ShoppingApp;
 			sourceTree = "<group>";
@@ -76,6 +121,10 @@
 		2CC535AA29069F860068B1BF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2C5BEFDE2906ABD4003C6645 /* Plists */,
+				2C5BEFDD2906ABCD003C6645 /* View */,
+				2C5BEFDC2906ABC7003C6645 /* Assets */,
+				2C5BEFDA2906AB62003C6645 /* Delegates */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -83,6 +132,8 @@
 		2CC535AB29069F890068B1BF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C5BEFDB2906AB6A003C6645 /* OnboardingScreen */,
+				2C5BEFD72906A189003C6645 /* SplashScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -101,7 +152,6 @@
 				0EF7BA948151F2382900042B /* Pods-ShoppingApp.debug.xcconfig */,
 				011AB57ECB97CDCA2AC0EFAF /* Pods-ShoppingApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -219,9 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CC5359B29069CDF0068B1BF /* ViewController.swift in Sources */,
+				2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */,
 				2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */,
 				2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */,
+				2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +414,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XR3YYGBUB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShoppingApp/Info.plist;
+				INFOPLIST_FILE = ShoppingApp/App/Plists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -391,7 +442,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XR3YYGBUB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShoppingApp/Info.plist;
+				INFOPLIST_FILE = ShoppingApp/App/Plists/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

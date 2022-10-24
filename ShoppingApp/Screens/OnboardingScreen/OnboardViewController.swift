@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OnboardViewController.swift
 //  ShoppingApp
 //
 //  Created by Bartu Gençcan on 24.10.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OnboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -53,13 +53,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // View Controllers
-        let homeViewController = ViewController()
+        let splashViewController = SplashViewController()
+        let onboardViewController = OnboardViewController()
         
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        homeNavigationController.tabBarItem.image = UIImage(systemName: "house")
-        homeNavigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        // Navigation Controllers
+        let splashNavigationController = UINavigationController(rootViewController: splashViewController)
         
-        window.rootViewController = homeNavigationController
+        let onboardNavigationController = UINavigationController(rootViewController: onboardViewController)
+        
+        window.rootViewController = splashNavigationController
                 window.makeKeyAndVisible()
                 self.window = window
     }
