@@ -10,11 +10,7 @@ import UIKit
 class OnboardContainerViewController: UIViewController {
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
-    var currentVC: UIViewController {
-        didSet{
-            
-        }
-    }
+    var currentVC: UIViewController
     let skipButton = UIButton(type: .system)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -40,7 +36,7 @@ class OnboardContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .systemOrange
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
@@ -48,8 +44,9 @@ class OnboardContainerViewController: UIViewController {
         
         pageViewController.dataSource = self
         
-        configurePageViewController()
+        pageViewControllerLayout()
         configureSkipButton()
+        skipButtonLayout()
         
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
@@ -57,7 +54,7 @@ class OnboardContainerViewController: UIViewController {
     }
     
     // MARK: - Methods
-    private func configurePageViewController(){
+    private func pageViewControllerLayout(){
         pageViewController.view.snp.makeConstraints { make in
             make.top.equalTo(view.snp.top)
             make.leading.equalTo(view.snp.leading)
@@ -67,10 +64,13 @@ class OnboardContainerViewController: UIViewController {
     }
     
     private func configureSkipButton(){
-        view.addSubview(skipButton)
-        
         skipButton.setTitle("Skip", for: .normal)
+        skipButton.addTarget(self, action: #selector(skipTapped), for: .primaryActionTriggered)
         
+        view.addSubview(skipButton)
+    }
+    
+    private func skipButtonLayout(){
         skipButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.trailing.equalTo(view.snp.trailing).offset(-18.0)
@@ -110,4 +110,14 @@ extension OnboardContainerViewController: UIPageViewControllerDataSource {
         return pages.firstIndex(of: self.currentVC) ?? 0
     }
 }
+
+// MARK: - Actions
+extension OnboardContainerViewController {
+    @objc
+    private func skipTapped(_ sender: UIButton){
+        let loginVC = LoginViewController()
+        self.navigationController?.setViewControllers([loginVC], animated: true)
+    }
+}
+
 

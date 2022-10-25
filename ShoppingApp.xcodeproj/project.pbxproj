@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695C929080E1400D264DC /* LoginViewController.swift */; };
 		2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFD82906A19F003C6645 /* SplashViewController.swift */; };
 		2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFE32906B0FA003C6645 /* OnboardContainerViewController.swift */; };
 		2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359629069CDF0068B1BF /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 		011AB57ECB97CDCA2AC0EFAF /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		0595C361405B7674CABC0B35 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF7BA948151F2382900042B /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2C3695C929080E1400D264DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C5BEFD82906A19F003C6645 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2C5BEFE32906B0FA003C6645 /* OnboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardContainerViewController.swift; sourceTree = "<group>"; };
 		2CC5359329069CDF0068B1BF /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3695C729080DF500D264DC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2C3695C829080E0100D264DC /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		2C3695C829080E0100D264DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C3695C929080E1400D264DC /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		2C5BEFD72906A189003C6645 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +161,7 @@
 		2CC535AB29069F890068B1BF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C3695C729080DF500D264DC /* Login */,
 				2C5BEFDB2906AB6A003C6645 /* OnboardingScreen */,
 				2C5BEFD72906A189003C6645 /* SplashScreen */,
 			);
@@ -280,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */,
 				2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */,
 				2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */,
 				2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */,
