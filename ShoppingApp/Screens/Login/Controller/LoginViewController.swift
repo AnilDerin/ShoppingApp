@@ -7,11 +7,19 @@
 
 import UIKit
 
+
 class LoginViewController: UIViewController {
+    
+    private lazy var loginView: LoginView = {
+        let view = LoginView()
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        view = loginView
+        
+      
     }
 }
