@@ -113,5 +113,6 @@ extension OnboardViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-16.0)
         }
     }
+
 }
 

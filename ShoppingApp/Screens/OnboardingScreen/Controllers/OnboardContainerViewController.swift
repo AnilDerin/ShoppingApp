@@ -20,6 +20,7 @@ class OnboardContainerViewController: UIViewController {
         let page2 = OnboardViewController(heroImageName: "eCommerce", titleText: "E-Commerce", descriptonText: "Swift Shop is an app that lets users to buy the items they want Ecommerce.")
         let page3 = OnboardViewController(heroImageName: "cart", titleText: "Cart", descriptonText: "Swift Shop is an app that lets users to buy the items they want Cart.")
         
+        
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
@@ -76,9 +77,8 @@ class OnboardContainerViewController: UIViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-18.0)
         }
     }
-    
 }
-
+    
 // MARK: - UIPageViewControllerDataSource
 extension OnboardContainerViewController: UIPageViewControllerDataSource {
     
@@ -119,5 +119,3 @@ extension OnboardContainerViewController {
         self.navigationController?.setViewControllers([loginVC], animated: true)
     }
 }
-
-
