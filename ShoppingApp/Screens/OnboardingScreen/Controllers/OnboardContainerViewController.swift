@@ -115,7 +115,7 @@ extension OnboardContainerViewController: UIPageViewControllerDataSource {
 extension OnboardContainerViewController {
     @objc
     private func skipTapped(_ sender: UIButton){
-        let loginVC = LoginViewController()
+        let loginVC = LoginViewController(viewModel: LoginViewModel())
         self.navigationController?.setViewControllers([loginVC], animated: true)
     }
 }
