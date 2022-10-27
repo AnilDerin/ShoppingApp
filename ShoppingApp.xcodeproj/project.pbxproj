@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C01BEC3290B22F200B08FE5 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */; };
 		2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695C929080E1400D264DC /* LoginViewController.swift */; };
 		2C3695CD2908124C00D264DC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695CC2908124C00D264DC /* LoginView.swift */; };
 		2C4342D429094D470023BA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C4342D329094D470023BA0C /* GoogleService-Info.plist */; };
@@ -20,6 +21,7 @@
 		2C4342E72909744A0023BA0C /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C4342E62909744A0023BA0C /* RemoteConfigDefaults.plist */; };
 		2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFD82906A19F003C6645 /* SplashViewController.swift */; };
 		2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFE32906B0FA003C6645 /* OnboardContainerViewController.swift */; };
+		2C73FA2B2909BEB200EFAE88 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FA2A2909BEB200EFAE88 /* MainTabBarController.swift */; };
 		2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359629069CDF0068B1BF /* AppDelegate.swift */; };
 		2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359829069CDF0068B1BF /* SceneDelegate.swift */; };
 		2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359A29069CDF0068B1BF /* OnboardViewController.swift */; };
@@ -32,6 +34,7 @@
 		011AB57ECB97CDCA2AC0EFAF /* Pods-ShoppingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.release.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.release.xcconfig"; sourceTree = "<group>"; };
 		0595C361405B7674CABC0B35 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF7BA948151F2382900042B /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		2C3695C929080E1400D264DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C3695CC2908124C00D264DC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2C4342D329094D470023BA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		2C4342E62909744A0023BA0C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		2C5BEFD82906A19F003C6645 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		2C5BEFE32906B0FA003C6645 /* OnboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardContainerViewController.swift; sourceTree = "<group>"; };
+		2C73FA2A2909BEB200EFAE88 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		2CC5359329069CDF0068B1BF /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC5359629069CDF0068B1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC5359829069CDF0068B1BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C01BEC0290B22DC00B08FE5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2C01BEC1290B22E100B08FE5 /* Helpers */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2C01BEC1290B22E100B08FE5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		2C3695C729080DF500D264DC /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +189,22 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		2C73FA282909BE8F00EFAE88 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FA292909BE9400EFAE88 /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2C73FA292909BE9400EFAE88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C73FA2A2909BEB200EFAE88 /* MainTabBarController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		2CC5358A29069CDF0068B1BF = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +235,7 @@
 		2CC535AA29069F860068B1BF /* App */ = {
 			isa = PBXGroup;
 			children = (
+				2C01BEC0290B22DC00B08FE5 /* Core */,
 				2C5BEFDE2906ABD4003C6645 /* Plists */,
 				2C5BEFDD2906ABCD003C6645 /* View */,
 				2C5BEFDC2906ABC7003C6645 /* Assets */,
@@ -210,6 +247,7 @@
 		2CC535AB29069F890068B1BF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2C73FA282909BE8F00EFAE88 /* Main */,
 				2C3695C729080DF500D264DC /* Login */,
 				2C5BEFDB2906AB6A003C6645 /* OnboardingScreen */,
 				2C5BEFD72906A189003C6645 /* SplashScreen */,
@@ -362,11 +400,13 @@
 			files = (
 				2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */,
 				2C3695CD2908124C00D264DC /* LoginView.swift in Sources */,
+				2C01BEC3290B22F200B08FE5 /* AlertPresentable.swift in Sources */,
 				2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */,
 				2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */,
 				2C4342E2290969380023BA0C /* User.swift in Sources */,
 				2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */,
 				2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */,
+				2C73FA2B2909BEB200EFAE88 /* MainTabBarController.swift in Sources */,
 				2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */,
 				2C4342E529096D440023BA0C /* LoginViewModel.swift in Sources */,
 			);

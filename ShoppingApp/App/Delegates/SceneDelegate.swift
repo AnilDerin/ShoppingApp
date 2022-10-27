@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        setupWindow(with: windowScene)
+        setupWindow1(with: windowScene)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -61,6 +61,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = splashNavigationController
                 window.makeKeyAndVisible()
                 self.window = window
+    }
+    
+    private func setupWindow1(with windowScene:UIWindowScene){
+        let window = UIWindow(windowScene: windowScene)
+        
+        
+        
+        // View Controllers
+        let splashViewController = SplashViewController()
+        let mainTabBarController = MainTabBarController()
+        
+        // Navigation Controllers
+        let navigationSplashViewController = UINavigationController(rootViewController: splashViewController)
+        let navigationMainTabBarController = UINavigationController(rootViewController: mainTabBarController)
+        
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        
+        if isLoggedIn {
+            window.rootViewController = navigationMainTabBarController
+            window.makeKeyAndVisible()
+            self.window = window
+        }else {
+            window.rootViewController = navigationSplashViewController
+            window.makeKeyAndVisible()
+            self.window = window
+        }
     }
 }
 

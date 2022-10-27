@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, AlertPresentable{
     
     private let viewModel: LoginViewModel
+    
+    var activityView: UIActivityIndicatorView?
     
     enum AuthType: String {
         case signIn = "Sign In"
@@ -60,7 +62,14 @@ class LoginViewController: UIViewController {
             case .didErrorOccured(let error):
                 print(error.localizedDescription)
             case .didSignUpSuccessful:
-                print("Sign Up Successful")
+                    self.activityView?.stopAnimating()
+                    self.showAlert(title: "Sign Up Successful!")
+                    self.loginView.emailTextField.text = ""
+                    self.loginView.passwordTextField.text = ""
+                    self.loginView.segmentedControl.selectedSegmentIndex = 0
+                    self.authType = .signIn
+                    self.view.backgroundColor = .white
+                
             }
         }
         
@@ -74,6 +83,24 @@ class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController {
+    func showActivityIndicator(){
+        activityView = UIActivityIndicatorView(style: .large)
+        
+        guard let activityView = activityView else {return}
+        
+        self.view.addSubview(activityView)
+        self.view.bringSubviewToFront(activityView)
+        
+        activityView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.snp.centerX)
+            make.centerY.equalTo(view.snp.centerY)
+        }
+        
+        activityView.startAnimating()
+    }
+}
+
 extension LoginViewController: LoginViewDelegate {
     func didTapFinishAuthButton(sender: UIButton) {
         
@@ -82,17 +109,23 @@ extension LoginViewController: LoginViewDelegate {
         
         switch authType {
         case .signIn:
-            viewModel.signIn(email: email, password: password)
+            viewModel.signIn(email: email, password: password) {
+                let tabBarController = MainTabBarController()
+                self.navigationController?.pushViewController(tabBarController, animated: true)
+            }
             
         case .signUp:
             viewModel.signUp(email: email, password: password)
+            
+            self.showActivityIndicator()
+            self.view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+            self.loginView.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
         }
     }
     
     func didAuthChange(segmentedControl: UISegmentedControl) {
         let buttonTitle = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
         authType = AuthType(text: buttonTitle ?? "Sign In")
-        print(authType)
     }
     
     func didTapShowPasswordButton(sender: UIButton) {
