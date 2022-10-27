@@ -62,13 +62,15 @@ class LoginViewController: UIViewController, AlertPresentable{
             case .didErrorOccured(let error):
                 print(error.localizedDescription)
             case .didSignUpSuccessful:
-                    self.activityView?.stopAnimating()
-                    self.showAlert(title: "Sign Up Successful!")
-                    self.loginView.emailTextField.text = ""
-                    self.loginView.passwordTextField.text = ""
-                    self.loginView.segmentedControl.selectedSegmentIndex = 0
-                    self.authType = .signIn
-                    self.view.backgroundColor = .white
+                self.activityView?.stopAnimating()
+                self.showAlert(title: "Sign Up Successful!")
+                self.loginView.emailTextField.text = ""
+                self.loginView.passwordTextField.text = ""
+                self.loginView.passwordConfirmTextField.text = ""
+                self.loginView.usernameTextField.text = ""
+                self.loginView.segmentedControl.selectedSegmentIndex = 0
+                self.didAuthChange(segmentedControl: self.loginView.segmentedControl)
+                self.view.backgroundColor = .white
                 
             }
         }
@@ -104,8 +106,10 @@ extension LoginViewController {
 extension LoginViewController: LoginViewDelegate {
     func didTapFinishAuthButton(sender: UIButton) {
         
-        guard let email = loginView.emailTextField.text else {return}
-        guard let password = loginView.passwordTextField.text else {return}
+        guard let email = loginView.emailTextField.text,
+              let password = loginView.passwordTextField.text,
+              let username = loginView.usernameTextField.text
+        else {return}
         
         switch authType {
         case .signIn:
@@ -115,24 +119,30 @@ extension LoginViewController: LoginViewDelegate {
             }
             
         case .signUp:
-            viewModel.signUp(email: email, password: password)
-            
-            self.showActivityIndicator()
-            self.view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-            self.loginView.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+            if self.loginView.passwordTextField.text == self.loginView.passwordConfirmTextField.text {
+                viewModel.signUp(username: username,email: email, password: password)
+                
+                self.showActivityIndicator()
+                self.view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+                self.loginView.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+            }else {
+                showAlert(title: "Password Error", message: "Passwords should match.")
+            }
+
         }
     }
     
     func didAuthChange(segmentedControl: UISegmentedControl) {
         let buttonTitle = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
         authType = AuthType(text: buttonTitle ?? "Sign In")
-    }
-    
-    func didTapShowPasswordButton(sender: UIButton) {
-        if loginView.passwordTextField.isSecureTextEntry == true {
-            loginView.passwordTextField.isSecureTextEntry = false
-        } else {
-            loginView.passwordTextField.isSecureTextEntry = true
+        
+        switch authType {
+        case .signIn:
+            self.loginView.usernameTextField.isHidden = true
+            self.loginView.passwordConfirmTextField.isHidden = true
+        case .signUp:
+            self.loginView.usernameTextField.isHidden = false
+            self.loginView.passwordConfirmTextField.isHidden = false
         }
     }
 }
