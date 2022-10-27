@@ -25,7 +25,7 @@ class LoginViewModel {
     
     private let db = Firestore.firestore()
     
-    func signUp(email: String, password: String){
+    func signUp(username:String ,email: String, password: String){
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 self.changeHandler?(.didErrorOccured(error))

@@ -11,7 +11,6 @@ import UIKit
 protocol LoginViewDelegate: AnyObject {
     func didTapFinishAuthButton(sender: UIButton)
     func didAuthChange(segmentedControl: UISegmentedControl)
-    func didTapShowPasswordButton(sender: UIButton)
 }
 
 class LoginView: UIView {
@@ -33,29 +32,54 @@ class LoginView: UIView {
         return segmentedControl
     }()
     
+    private(set) lazy var usernameTextField: UITextField = {
+        let textField = UITextField()
+         textField.placeholder = "Username"
+         textField.layer.cornerRadius = 12
+         textField.layer.borderWidth = 1
+        textField.isHidden = true
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+         return textField
+    }()
+    
     private(set) lazy var emailTextField: UITextField = {
        let textField = UITextField()
-        textField.placeholder = "  Email"
+        textField.placeholder = "Email"
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
         return textField
     }()
     
     private(set) lazy var passwordTextField: UITextField = {
        let textField = UITextField()
-        textField.placeholder = "  Password"
+        textField.placeholder = "Password"
         textField.layer.cornerRadius = 12
         textField.layer.borderWidth = 1
         textField.isSecureTextEntry = true
         textField.clearsOnBeginEditing = false
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
         return textField
     }()
     
-    private lazy var showPasswordButton: UIButton = {
-       let button = UIButton()
-        button.setTitle("👁‍🗨", for: .normal)
-        button.addTarget(self, action: #selector(didTapShowPasswordButton(_:)), for: .touchUpInside)
-        return button
+    private(set) lazy var passwordConfirmTextField: UITextField = {
+        let textField = UITextField()
+         textField.placeholder = "Password"
+         textField.layer.cornerRadius = 12
+         textField.layer.borderWidth = 1
+         textField.isSecureTextEntry = true
+         textField.clearsOnBeginEditing = false
+         textField.isHidden = true
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+         return textField
     }()
     
     private(set) lazy var finishAuthButton: UIButton = {
@@ -102,16 +126,28 @@ extension LoginView {
         }
     }
     
-    private func emailTextFieldLayout(){
-        addSubview(emailTextField)
+    private func usernameTextFieldLayout(){
+        addSubview(usernameTextField)
         
-        emailTextField.snp.makeConstraints { make in
+        usernameTextField.snp.makeConstraints { make in
             make.top.equalTo(segmentedControl.snp.bottom).offset(64.0)
             make.centerX.equalTo(self.snp.centerX)
             make.height.equalTo(32.0)
             make.leading.equalTo(32.0)
             make.trailing.equalTo(-32.0)
         }
+    }
+    
+    private func emailTextFieldLayout(){
+        addSubview(emailTextField)
+            emailTextField.snp.makeConstraints { make in
+                make.top.equalTo(segmentedControl.snp.bottom).offset(112.0)
+                make.centerX.equalTo(self.snp.centerX)
+                make.height.equalTo(32.0)
+                make.leading.equalTo(32.0)
+                make.trailing.equalTo(-32.0)
+            }
+        
     }
     
     private func passwordTextFieldLayout(){
@@ -126,12 +162,15 @@ extension LoginView {
         }
     }
     
-    private func showPasswordButtonLayout(){
-        addSubview(showPasswordButton)
+    private func passwordConfirmTextFieldLayout(){
+        addSubview(passwordConfirmTextField)
         
-        showPasswordButton.snp.makeConstraints { make in
-            make.centerY.equalTo(passwordTextField.snp.centerY)
-            make.leading.equalTo(passwordTextField.snp.trailing).offset(4.0)
+        passwordConfirmTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(16.0)
+            make.centerX.equalTo(self.snp.centerX)
+            make.height.equalTo(32.0)
+            make.leading.equalTo(32.0)
+            make.trailing.equalTo(-32.0)
         }
     }
     
@@ -146,12 +185,13 @@ extension LoginView {
     }
     
     private func layout(){
-        titleLabelLayout()
-        segmentedControlLayout()
-        emailTextFieldLayout()
-        passwordTextFieldLayout()
-        showPasswordButtonLayout()
-        finishAuthButtonLayout()
+            titleLabelLayout()
+            segmentedControlLayout()
+            usernameTextFieldLayout()
+            emailTextFieldLayout()
+            passwordTextFieldLayout()
+            passwordConfirmTextFieldLayout()
+            finishAuthButtonLayout()
     }
 }
 
@@ -163,9 +203,5 @@ extension LoginView {
     
     @objc private func didAuthChange(_ segmentedControl: UISegmentedControl){
         delegate?.didAuthChange(segmentedControl: segmentedControl)
-    }
-    
-    @objc private func didTapShowPasswordButton(_ sender: UIButton) {
-        delegate?.didTapShowPasswordButton(sender: sender)
     }
 }
