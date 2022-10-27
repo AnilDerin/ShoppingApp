@@ -35,12 +35,13 @@ class OnboardViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        titleLabelLayout()
-        imageViewLayout()
-        descriptionLabelLayout()
+        
     }
     
     override func viewDidLayoutSubviews() {
+        titleLabelLayout()
+        imageViewLayout()
+        descriptionLabelLayout()
         imageViewStyle()
         titleLabelStyle()
         descriptionLabelStyle()
@@ -80,7 +81,7 @@ extension OnboardViewController {
     }
     
     private func imageViewStyle(){
-        let radius = CGRectGetWidth(imageView.frame) / 2
+        let radius = imageView.frame.size.width / 2
         imageView.layer.cornerRadius = radius
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 2
