@@ -9,5 +9,6 @@ target 'ShoppingApp' do
   pod 'Moya'
   pod 'SnapKit'
   pod 'Kingfisher'
+  pod 'Cosmos', '~> 23.0'
 
 end

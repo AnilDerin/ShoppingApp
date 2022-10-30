@@ -52,8 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func setupWindow(with windowScene:UIWindowScene){
         let window = UIWindow(windowScene: windowScene)
         
-        
-        
         // View Controllers
         let splashViewController = SplashViewController()
         let mainTabBarController = MainTabBarController()
