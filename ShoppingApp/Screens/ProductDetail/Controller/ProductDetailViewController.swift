@@ -45,10 +45,10 @@ class ProductDetailViewController: UIViewController{
 }
 
 // MARK: - ProductDetailDelegate
-extension ProductDetailViewController: ProductDetailDelegate {
+extension ProductDetailViewController: ProductDetailDelegate, AlertPresentable {
     func didProductAddedToBasket() {
         NotificationCenter().post(name: NSNotification.Name("didAnyCoinAddedToFavorites"), object: nil)
-        print("Product Added to basket")
+        showAlert(title: "Info", message: "Product added to your basket!",  handler: nil)
     }
 }
 
