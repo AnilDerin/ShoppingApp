@@ -9,8 +9,7 @@ import Foundation
 import Moya
 
 // Moya plugin & provider
-let plugin: PluginType = NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
-let provider = MoyaProvider<FakeStoreAPI>(plugins: [plugin])
+let provider = MoyaProvider<FakeStoreAPI>()
 
 enum FakeStoreAPI {
     case allProducts

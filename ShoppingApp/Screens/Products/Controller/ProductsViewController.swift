@@ -100,11 +100,23 @@ extension ProductsViewController: UICollectionViewDataSource {
             fatalError("Product not found.")
         }
         
+        // Setting product image in cell
         cell.imageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
             collectionView.reloadItems(at: [indexPath])
         }
         
-        cell.title = "\(product.title?.maxLength(length: 20) ?? "")..."
+        // Setting product title in cell
+        if product.title?.count ?? 0 > 20 {
+            cell.title = "\(product.title?.maxLength(length: 20) ?? "")..."
+        }else {
+            cell.title = product.title
+        }
+        
+        // Setting product price in cell
+        cell.price = product.price
+        
+        // Setting product rating
+        cell.rating = product.rating?.rate
         
         return cell
     }

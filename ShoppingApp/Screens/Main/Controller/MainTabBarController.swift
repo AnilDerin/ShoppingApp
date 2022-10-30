@@ -15,6 +15,9 @@ class MainTabBarController: UITabBarController {
         // Hides Back Button
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        // Adding Cart Button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .plain, target: self, action: #selector(goToBasket))
+        
         // Tab Bar Colors
         self.tabBar.backgroundColor = .white
         self.tabBar.tintColor = .systemOrange
@@ -23,6 +26,7 @@ class MainTabBarController: UITabBarController {
         let productVC = ProductsViewController(viewModel: ProductsViewModel())
         let searchVC = SearchViewController()
         let profileVC = ProfileViewController()
+
         
         // Setting up view controller titles
         productVC.title = "Products"
@@ -42,6 +46,13 @@ class MainTabBarController: UITabBarController {
             items[x].image = UIImage(systemName: images[x])
             items[x].selectedImage = UIImage(systemName: selectedImages[x])
         }
+    }
+    
+    // MARK: - Methods
+    @objc
+    private func goToBasket(){
+        let basketVC = BasketViewController()
+        self.navigationController?.pushViewController(basketVC, animated: true)
     }
     
 
