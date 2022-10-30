@@ -83,7 +83,12 @@ class ProductsViewController: UIViewController {
 // MARK: - UICollectionViewDelegate
 extension ProductsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item selected")
+        guard let product = viewModel.productForIndexPath(indexPath) else {
+            return
+        }
+        let viewModel = ProductDetailViewModel(product: product)
+        let productDetailVC = ProductDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(productDetailVC, animated: true)
     }
 }
 
