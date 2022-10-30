@@ -13,9 +13,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         view.backgroundColor = .red
         // Do any additional setup after loading the view.
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
     
 
