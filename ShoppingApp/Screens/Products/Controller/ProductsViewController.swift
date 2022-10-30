@@ -1,0 +1,115 @@
+//
+//  ProductsViewController.swift
+//  ShoppingApp
+//
+//  Created by Bartu Gençcan on 30.10.2022.
+//
+
+import UIKit
+import Kingfisher
+
+class ProductsViewController: UIViewController {
+    
+    private var viewModel: ProductsViewModel
+    
+    // MARK: - Props
+    private let cellInset: CGFloat = 8.0
+    private let cellMultiplier: CGFloat = 0.5
+    private var cellDimension: CGFloat {
+        .screenWidth * cellMultiplier - cellInset
+    }
+    
+    private lazy var flowLayout: UICollectionViewFlowLayout = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: cellDimension, height: cellDimension)
+        return flowLayout
+    }()
+    
+    private(set) lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+
+    // MARK: - Init
+    init(viewModel: ProductsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        
+        collectionView.register(ProductsCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        setupCollectionViewLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setCollectionViewDelegate(self, andDataSource: self)
+        
+        viewModel.fetchProducts()
+        
+        viewModel.changeHandler = { change in
+            switch change {
+            case .didFetchProducts:
+                self.collectionView.reloadData()
+            case .didErrorOccurred(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+    
+    // MARK: - Methods
+    private func setupCollectionViewLayout(){
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.leading.equalTo(view.snp.leading)
+            make.top.equalTo(view.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
+            make.trailing.equalTo(view.snp.trailing)
+        }
+    }
+    
+    func setCollectionViewDelegate(_ delegate: UICollectionViewDelegate, andDataSource dataSource: UICollectionViewDataSource){
+        collectionView.delegate = delegate
+        collectionView.dataSource = dataSource
+    }
+    
+    func refresh(){
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ProductsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("item selected")
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ProductsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.numberOfItems
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductsCollectionViewCell
+        
+        guard let product = viewModel.productForIndexPath(indexPath) else {
+            fatalError("Product not found.")
+        }
+        
+        cell.imageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
+            collectionView.reloadItems(at: [indexPath])
+        }
+        
+        cell.title = "\(product.title?.maxLength(length: 20) ?? "")..."
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        collectionView.reloadItems(at: [indexPath])
+    }
+}
