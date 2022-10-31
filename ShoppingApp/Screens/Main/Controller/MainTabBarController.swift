@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         // Do any additional setup after loading the view.
         
         // Hides Back Button
@@ -27,7 +27,7 @@ class MainTabBarController: UITabBarController {
         
         // Setting up view controllers
         let productVC = ProductsViewController(viewModel: ProductsViewModel())
-        let searchVC = SearchViewController()
+        let searchVC = SearchViewController(viewModel: ProductsViewModel())
         let profileVC = ProfileViewController()
 
         

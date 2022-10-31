@@ -14,10 +14,10 @@ struct User: Encodable {
     let basket: [String]?
     
     var dictionary: [String: Any] {
-        return ["username": username,
-                "email": email,
-                "pp": pp,
-                "basket": basket
+        return ["username": username ?? "",
+                "email": email ?? "",
+                "pp": pp ?? "",
+                "basket": basket ?? []
         ]
     }
     var nsDictionary: NSDictionary {

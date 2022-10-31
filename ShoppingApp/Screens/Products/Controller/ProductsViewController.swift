@@ -26,6 +26,7 @@ class ProductsViewController: UIViewController {
     }()
     
     private(set) lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    
 
     // MARK: - Init
     init(viewModel: ProductsViewModel) {
@@ -57,7 +58,8 @@ class ProductsViewController: UIViewController {
         }
     }
     
-    // MARK: - Methods
+    
+    
     private func setupCollectionViewLayout(){
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -67,6 +69,7 @@ class ProductsViewController: UIViewController {
             make.trailing.equalTo(view.snp.trailing)
         }
     }
+   
     
     func setCollectionViewDelegate(_ delegate: UICollectionViewDelegate, andDataSource dataSource: UICollectionViewDataSource){
         collectionView.delegate = delegate
@@ -95,7 +98,7 @@ extension ProductsViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension ProductsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfItems
+            return viewModel.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,24 +108,24 @@ extension ProductsViewController: UICollectionViewDataSource {
             fatalError("Product not found.")
         }
         
-        // Setting product image in cell
-        cell.imageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
-            collectionView.reloadItems(at: [indexPath])
-        }
-        
-        // Setting product title in cell
-        if product.title?.count ?? 0 > 20 {
-            cell.title = "\(product.title?.maxLength(length: 20) ?? "")..."
-        }else {
-            cell.title = product.title
-        }
-        
-        // Setting product price in cell
-        cell.price = product.price
-        
-        // Setting product rating
-        cell.rating = product.rating?.rate
-        
+            // Setting product image in cell
+            cell.imageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
+                collectionView.reloadItems(at: [indexPath])
+            }
+            
+            // Setting product title in cell
+            if product.title?.count ?? 0 > 20 {
+                cell.title = "\(product.title?.maxLength(length: 20) ?? "")..."
+            }else {
+                cell.title = product.title
+            }
+            
+            // Setting product price in cell
+            cell.price = product.price
+            
+            // Setting product rating
+            cell.rating = product.rating?.rate
+
         return cell
     }
     
@@ -130,3 +133,4 @@ extension ProductsViewController: UICollectionViewDataSource {
         collectionView.reloadItems(at: [indexPath])
     }
 }
+

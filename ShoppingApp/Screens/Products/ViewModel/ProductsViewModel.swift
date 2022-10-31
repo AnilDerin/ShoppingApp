@@ -29,7 +29,7 @@ class ProductsViewModel {
     
     var changeHandler: ((ProductListChanges) -> Void)?
     
-    private var productsList: [Product]? {
+    private(set) var productsList: [Product]? {
         didSet {
             self.changeHandler?(.didFetchProducts)
         }

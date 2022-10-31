@@ -17,7 +17,7 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     var price: Double? {
         didSet {
-            priceLabel.text = "\(price ?? 0)$"
+            priceLabel.text = "\(price ?? 0) $"
         }
     }
     
