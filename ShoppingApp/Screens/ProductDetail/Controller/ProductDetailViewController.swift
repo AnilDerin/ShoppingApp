@@ -38,7 +38,7 @@ class ProductDetailViewController: UIViewController{
         productDetailView.title = viewModel.title
         productDetailView.rating = viewModel.rating
         productDetailView.productDescription = viewModel.description
-        productDetailView.price = "\(viewModel.price ?? 0)$"
+        productDetailView.price = "\(viewModel.price ?? 0) $"
         
         view.backgroundColor = .white
     }

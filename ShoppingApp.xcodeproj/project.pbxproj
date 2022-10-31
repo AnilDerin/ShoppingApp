@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C01BEC3290B22F200B08FE5 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */; };
+		2C189CA92910444F009B490B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C189CA82910444F009B490B /* UIImage+Extensions.swift */; };
 		2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695C929080E1400D264DC /* LoginViewController.swift */; };
 		2C3695CD2908124C00D264DC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695CC2908124C00D264DC /* LoginView.swift */; };
 		2C4342D429094D470023BA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C4342D329094D470023BA0C /* GoogleService-Info.plist */; };
@@ -49,6 +50,7 @@
 		0595C361405B7674CABC0B35 /* Pods_ShoppingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoppingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF7BA948151F2382900042B /* Pods-ShoppingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoppingApp.debug.xcconfig"; path = "Target Support Files/Pods-ShoppingApp/Pods-ShoppingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
+		2C189CA82910444F009B490B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		2C3695C929080E1400D264DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C3695CC2908124C00D264DC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2C4342D329094D470023BA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				2CA1E73B290E8878004FCAC0 /* CGFloat+Extensions.swift */,
 				2CA1E745290E9C97004FCAC0 /* String+Extensions.swift */,
+				2C189CA82910444F009B490B /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				2CA1E732290E7BFD004FCAC0 /* FakeStoreAPI.swift in Sources */,
 				2C4D131C290F1F110037B49D /* ProductDetailView.swift in Sources */,
 				2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */,
+				2C189CA92910444F009B490B /* UIImage+Extensions.swift in Sources */,
 				2C4342E529096D440023BA0C /* LoginViewModel.swift in Sources */,
 				2C4D131A290F1CFD0037B49D /* ProductDetailViewModel.swift in Sources */,
 			);

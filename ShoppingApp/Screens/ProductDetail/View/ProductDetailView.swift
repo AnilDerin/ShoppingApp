@@ -41,7 +41,10 @@ class ProductDetailView: UIView {
         }
     }
     
-    private(set) lazy var productImageView: UIImageView = UIImageView()
+    private(set) lazy var productImageView: UIImageView = {
+        let imageView = UIImageView()
+        return imageView
+    }()
     
     private lazy var productTitleLabel: UILabel = {
         let label = UILabel()
@@ -55,7 +58,7 @@ class ProductDetailView: UIView {
     private lazy var productPriceLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = UIFont.boldSystemFont(ofSize: 18.0)
         return label
     }()
     
@@ -92,8 +95,8 @@ class ProductDetailView: UIView {
         backgroundColor = .white
         
         setupProductImageView()
-        setupProductTitleLabel()
         setupProductPriceLabel()
+        setupProductTitleLabel()
         setupProductRatingView()
         setupProductDescriptionLabel()
         setupAddToBasketButton()
@@ -106,9 +109,18 @@ class ProductDetailView: UIView {
     // MARK: - Methods
     private func setupProductImageView(){
         addSubview(productImageView)
+        
         productImageView.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(32.0)
-            make.height.width.equalTo(256.0)
+            make.size.equalTo(256.0)
+            make.centerX.equalTo(self.snp.centerX)
+        }
+    }
+    
+    private func setupProductPriceLabel(){
+        addSubview(productPriceLabel)
+        productPriceLabel.snp.makeConstraints { make in
+            make.top.equalTo(productImageView.snp.bottom).offset(32.0)
             make.centerX.equalTo(self.snp.centerX)
         }
     }
@@ -116,16 +128,7 @@ class ProductDetailView: UIView {
     private func setupProductTitleLabel(){
         addSubview(productTitleLabel)
         productTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(productImageView.snp.bottom).offset(32.0)
-            make.leading.equalTo(self.snp.leading).offset(8.0)
-            make.trailing.equalTo(self.snp.trailing).offset(-8.0)
-        }
-    }
-    
-    private func setupProductPriceLabel(){
-        addSubview(productPriceLabel)
-        productPriceLabel.snp.makeConstraints { make in
-            make.top.equalTo(productTitleLabel.snp.bottom).offset(8.0)
+            make.top.equalTo(productPriceLabel.snp.bottom).offset(16.0)
             make.centerX.equalTo(self.snp.centerX)
         }
     }
