@@ -6,37 +6,30 @@
 //
 
 import UIKit
-import FirebaseFirestore
 
 class ProfileViewController: UIViewController {
     
-    let db = Firestore.firestore()
+    private var viewModel: ProfileViewModel
     
-    let userDefaults = UserDefaults.standard
+    // MARK: - Init
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Profile"
         
-        getCollectionData { error in
-            if let error = error {
-                print(error.localizedDescription)
-            }else {
-                print("complete")
-            }
-        }
-        
+        viewModel.getCollectionData()
+
     }
-    
-    func getCollectionData(_ completion: @escaping (Error?) -> Void) {
-        guard let uid = userDefaults.object(forKey: "uid") else {return}
-        
-        db.collection("users").document(uid as! String).getDocument { querySnapshot, error in
-            guard let data = querySnapshot?.data() else {return}
-            print(data)
-        }
-    }
-            
-    
 }
+
+
+
