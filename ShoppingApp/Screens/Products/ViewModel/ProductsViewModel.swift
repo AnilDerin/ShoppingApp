@@ -35,6 +35,8 @@ class ProductsViewModel {
         }
     }
     
+    var isLoading = true
+    
     var numberOfItems: Int {
         productsList?.count ?? .zero
     }
@@ -49,6 +51,7 @@ class ProductsViewModel {
                 do {
                     let products = try JSONDecoder().decode([Product].self, from: response.data)
                     self.productsList = products
+                    self.isLoading = false
                 }catch {
                     self.changeHandler?(.didErrorOccurred(error))
                 }

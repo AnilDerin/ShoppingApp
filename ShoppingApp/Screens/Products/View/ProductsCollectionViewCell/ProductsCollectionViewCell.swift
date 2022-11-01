@@ -30,8 +30,6 @@ class ProductsCollectionViewCell: UICollectionViewCell {
     
     private var animationView: LottieAnimationView?
     
-    private var viewModel: ProductsViewModel?
-        
     private lazy var gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.startPoint = CGPoint(x: 0.5, y: 0.0)
