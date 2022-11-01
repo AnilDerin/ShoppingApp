@@ -55,10 +55,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // View Controllers
         let splashViewController = SplashViewController()
         let mainTabBarController = MainTabBarController()
+        let profileViewController = ProfileViewController(viewModel: ProfileViewModel())
         
         // Navigation Controllers
         let navigationSplashViewController = UINavigationController(rootViewController: splashViewController)
         let navigationMainTabBarController = UINavigationController(rootViewController: mainTabBarController)
+        //let profileNavigationController = UINavigationController(rootViewController: profileViewController)
+        
         
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
