@@ -27,6 +27,7 @@
 		2C5BEFD92906A19F003C6645 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFD82906A19F003C6645 /* SplashViewController.swift */; };
 		2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5BEFE32906B0FA003C6645 /* OnboardContainerViewController.swift */; };
 		2C73FA2B2909BEB200EFAE88 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C73FA2A2909BEB200EFAE88 /* MainTabBarController.swift */; };
+		2C95C6E5291151BE005E7B18 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C95C6E4291151BE005E7B18 /* Lottie */; };
 		2CA1E724290E747B004FCAC0 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E723290E747B004FCAC0 /* ProductsViewController.swift */; };
 		2CA1E728290E7554004FCAC0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E727290E7554004FCAC0 /* SearchViewController.swift */; };
 		2CA1E72C290E7765004FCAC0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E72B290E7765004FCAC0 /* ProfileViewController.swift */; };
@@ -89,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4342D929094DA20023BA0C /* FirebaseDatabaseSwift in Frameworks */,
+				2C95C6E5291151BE005E7B18 /* Lottie in Frameworks */,
 				61140AAC4D82021FAB9E5FB1 /* Pods_ShoppingApp.framework in Frameworks */,
 				2C4342DD29094DA20023BA0C /* FirebaseRemoteConfigSwift in Frameworks */,
 				2C4342D729094DA20023BA0C /* FirebaseAuth in Frameworks */,
@@ -485,6 +487,7 @@
 				2C4342DA29094DA20023BA0C /* FirebaseFirestoreSwift */,
 				2C4342DC29094DA20023BA0C /* FirebaseRemoteConfigSwift */,
 				2C4342DE29094DA20023BA0C /* FirebaseStorage */,
+				2C95C6E4291151BE005E7B18 /* Lottie */,
 			);
 			productName = ShoppingApp;
 			productReference = 2CC5359329069CDF0068B1BF /* ShoppingApp.app */;
@@ -516,6 +519,7 @@
 			mainGroup = 2CC5358A29069CDF0068B1BF;
 			packageReferences = (
 				2C4342D529094DA20023BA0C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2C95C6E3291151BE005E7B18 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 2CC5359429069CDF0068B1BF /* Products */;
 			projectDirPath = "";
@@ -832,6 +836,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		2C95C6E3291151BE005E7B18 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -859,6 +871,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C4342D529094DA20023BA0C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		2C95C6E4291151BE005E7B18 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C95C6E3291151BE005E7B18 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
