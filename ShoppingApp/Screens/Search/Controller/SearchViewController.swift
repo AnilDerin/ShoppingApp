@@ -110,12 +110,22 @@ class SearchViewController: UIViewController {
 // MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         guard let product = viewModel.productForIndexPath(indexPath) else {
             return
         }
-        let viewModel = ProductDetailViewModel(product: product)
-        let productDetailVC = ProductDetailViewController(viewModel: viewModel)
-        navigationController?.pushViewController(productDetailVC, animated: true)
+        
+        if searchActive {
+            let searchedProduct = searchData[indexPath.row]
+            let viewModel = ProductDetailViewModel(product: searchedProduct)
+            let productDetailVC = ProductDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(productDetailVC, animated: true)
+        }else {
+            let viewModel = ProductDetailViewModel(product: product)
+            let productDetailVC = ProductDetailViewController(viewModel: viewModel)
+            navigationController?.pushViewController(productDetailVC, animated: true)
+        }
+        
     }
 }
 
