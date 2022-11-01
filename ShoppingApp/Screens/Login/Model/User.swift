@@ -11,7 +11,7 @@ struct User: Encodable {
     let username: String?
     let email: String?
     let pp: String?
-    let basket: [String]?
+    let basket: [Product]?
     
     var dictionary: [String: Any] {
         return ["username": username ?? "",

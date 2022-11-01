@@ -37,6 +37,8 @@
 		2CA1E73C290E8878004FCAC0 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E73B290E8878004FCAC0 /* CGFloat+Extensions.swift */; };
 		2CA1E741290E8A58004FCAC0 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E740290E8A57004FCAC0 /* ProductsCollectionViewCell.swift */; };
 		2CA1E746290E9C97004FCAC0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E745290E9C97004FCAC0 /* String+Extensions.swift */; };
+		2CC1A48C291160100020EECC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC1A48B291160100020EECC /* ProfileViewModel.swift */; };
+		2CC1A48E291167080020EECC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC1A48D291167080020EECC /* ProfileView.swift */; };
 		2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359629069CDF0068B1BF /* AppDelegate.swift */; };
 		2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359829069CDF0068B1BF /* SceneDelegate.swift */; };
 		2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5359A29069CDF0068B1BF /* OnboardViewController.swift */; };
@@ -74,6 +76,8 @@
 		2CA1E73B290E8878004FCAC0 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		2CA1E740290E8A57004FCAC0 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CA1E745290E9C97004FCAC0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2CC1A48B291160100020EECC /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		2CC1A48D291167080020EECC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2CC5359329069CDF0068B1BF /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC5359629069CDF0068B1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC5359829069CDF0068B1BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,6 +329,8 @@
 		2CA1E729290E774F004FCAC0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				2CC1A48929115BE30020EECC /* ViewModel */,
+				2CC1A48829115BDF0020EECC /* View */,
 				2CA1E72A290E7759004FCAC0 /* Controller */,
 			);
 			path = Profile;
@@ -387,6 +393,22 @@
 				2CA1E740290E8A57004FCAC0 /* ProductsCollectionViewCell.swift */,
 			);
 			path = ProductsCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		2CC1A48829115BDF0020EECC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CC1A48D291167080020EECC /* ProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CC1A48929115BE30020EECC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2CC1A48B291160100020EECC /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2CC5358A29069CDF0068B1BF = {
@@ -590,6 +612,7 @@
 				2CA1E741290E8A58004FCAC0 /* ProductsCollectionViewCell.swift in Sources */,
 				2CA1E739290E842E004FCAC0 /* ProductsViewModel.swift in Sources */,
 				2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */,
+				2CC1A48C291160100020EECC /* ProfileViewModel.swift in Sources */,
 				2C3695CD2908124C00D264DC /* LoginView.swift in Sources */,
 				2C01BEC3290B22F200B08FE5 /* AlertPresentable.swift in Sources */,
 				2C5BEFE42906B0FA003C6645 /* OnboardContainerViewController.swift in Sources */,
@@ -598,6 +621,7 @@
 				2CC5359B29069CDF0068B1BF /* OnboardViewController.swift in Sources */,
 				2CA1E737290E83E1004FCAC0 /* Products.swift in Sources */,
 				2C4342E2290969380023BA0C /* User.swift in Sources */,
+				2CC1A48E291167080020EECC /* ProfileView.swift in Sources */,
 				2CA1E724290E747B004FCAC0 /* ProductsViewController.swift in Sources */,
 				2CA1E746290E9C97004FCAC0 /* String+Extensions.swift in Sources */,
 				2CC5359729069CDF0068B1BF /* AppDelegate.swift in Sources */,

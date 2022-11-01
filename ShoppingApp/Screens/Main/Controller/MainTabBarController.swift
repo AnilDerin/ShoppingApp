@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
         // Setting up view controllers
         let productVC = ProductsViewController(viewModel: ProductsViewModel())
         let searchVC = SearchViewController(viewModel: ProductsViewModel())
-        let profileVC = ProfileViewController()
+        let profileVC = ProfileViewController(viewModel: ProfileViewModel())
 
         
         // Setting up view controller titles
