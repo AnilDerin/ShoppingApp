@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
+
+
 enum ProfileChanges {
     case didErrorOccurred(_ error: Error)
     case didFetchUser
