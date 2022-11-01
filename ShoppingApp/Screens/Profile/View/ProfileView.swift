@@ -19,5 +19,4 @@ class ProfileView: UIView {
        let imageView = UIImageView()
         return imageView
     }()
-    
 }
