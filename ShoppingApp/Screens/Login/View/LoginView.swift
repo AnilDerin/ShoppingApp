@@ -21,14 +21,16 @@ class LoginView: UIView {
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
         label.text = "Swift Shop"
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.font = UIFont.boldSystemFont(ofSize: 32.0)
+        label.textColor = .systemOrange
         return label
     }()
     
     private(set) lazy var segmentedControl: UISegmentedControl = {
         let items = ["Sign In","Sign Up"]
-       let segmentedControl = UISegmentedControl(items: items)
+        let segmentedControl = UISegmentedControl(items: items)
         segmentedControl.addTarget(self, action: #selector(didAuthChange(_:)), for: .valueChanged)
+        segmentedControl.backgroundColor = .systemOrange
         return segmentedControl
     }()
     
@@ -36,8 +38,9 @@ class LoginView: UIView {
         let textField = UITextField()
          textField.placeholder = "Username"
          textField.layer.cornerRadius = 12
-         textField.layer.borderWidth = 1
+         textField.layer.borderWidth = 3
         textField.isHidden = true
+        textField.layer.borderColor = UIColor.systemOrange.cgColor
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
         textField.leftView = leftView
         textField.leftViewMode = .always
@@ -48,7 +51,8 @@ class LoginView: UIView {
        let textField = UITextField()
         textField.placeholder = "Email"
         textField.layer.cornerRadius = 12
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 3
+        textField.layer.borderColor = UIColor.systemOrange.cgColor
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
         textField.leftView = leftView
         textField.leftViewMode = .always
@@ -59,9 +63,10 @@ class LoginView: UIView {
        let textField = UITextField()
         textField.placeholder = "Password"
         textField.layer.cornerRadius = 12
-        textField.layer.borderWidth = 1
+        textField.layer.borderWidth = 3
         textField.isSecureTextEntry = true
         textField.clearsOnBeginEditing = false
+        textField.layer.borderColor = UIColor.systemOrange.cgColor
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
         textField.leftView = leftView
         textField.leftViewMode = .always
@@ -72,8 +77,9 @@ class LoginView: UIView {
         let textField = UITextField()
          textField.placeholder = "Password"
          textField.layer.cornerRadius = 12
-         textField.layer.borderWidth = 1
+         textField.layer.borderWidth = 3
          textField.isSecureTextEntry = true
+         textField.layer.borderColor = UIColor.systemOrange.cgColor
          textField.clearsOnBeginEditing = false
          textField.isHidden = true
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
@@ -86,7 +92,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.setTitle("Sign In", for: .normal)
         button.addTarget(self, action: #selector(didTapFinishAuthButton(_:)), for: .touchUpInside)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = .systemOrange
         button.layer.cornerRadius = 16
         return button
     }()
@@ -94,9 +100,12 @@ class LoginView: UIView {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         backgroundColor = .white
         
         layout()
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -193,6 +202,25 @@ extension LoginView {
             passwordConfirmTextFieldLayout()
             finishAuthButtonLayout()
     }
+    
+// If found new background photo
+//    func assignbackground(){
+//          let background = UIImage(named: "doodle_new")
+//
+//          var imageView : UIImageView!
+//          imageView = UIImageView(frame: self.bounds)
+//          imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+//          imageView.clipsToBounds = true
+//          imageView.image = background
+//        imageView.layer.opacity = 0.8
+//          imageView.center = self.center
+//          addSubview(imageView)
+//          sendSubviewToBack(imageView)
+//
+//        imageView.snp.makeConstraints { make in
+//            make.leading.trailing.top.bottom.equalToSuperview()
+//        }
+//      }
 }
 
 // MARK: - Methods

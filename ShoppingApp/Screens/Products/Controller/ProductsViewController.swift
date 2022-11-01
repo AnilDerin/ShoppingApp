@@ -59,7 +59,6 @@ class ProductsViewController: UIViewController {
     }
     
     
-    
     private func setupCollectionViewLayout(){
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
@@ -81,6 +80,8 @@ class ProductsViewController: UIViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    
 }
 
 // MARK: - UICollectionViewDelegate

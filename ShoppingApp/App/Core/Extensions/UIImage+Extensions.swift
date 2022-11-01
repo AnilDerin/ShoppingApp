@@ -7,17 +7,13 @@
 
 import UIKit
 
-extension UIImage {
+extension UIImageView {
 
-    func addImagePadding(x: CGFloat, y: CGFloat) -> UIImage? {
-        let width: CGFloat = size.width + x
-        let height: CGFloat = size.height + y
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: height), false, 0)
-        let origin: CGPoint = CGPoint(x: (width - size.width) / 2, y: (height - size.height) / 2)
-        draw(at: origin)
-        let imageWithPadding = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return imageWithPadding
+    func roundedImage(imageView: UIImageView) {
+        let radius = imageView.frame.size.width / 2
+        imageView.layer.cornerRadius = radius
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.black.cgColor
     }
 }

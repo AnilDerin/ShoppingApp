@@ -54,7 +54,6 @@ class LoginViewController: UIViewController, AlertPresentable{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Auth"
         
         viewModel.changeHandler = { change in

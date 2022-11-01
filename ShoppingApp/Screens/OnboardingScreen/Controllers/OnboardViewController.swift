@@ -35,7 +35,6 @@ class OnboardViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,11 +80,10 @@ extension OnboardViewController {
     }
     
     private func imageViewStyle(){
-        let radius = imageView.frame.size.width / 2
-        imageView.layer.cornerRadius = radius
+        imageView.layer.cornerRadius = 120
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.layer.borderColor = UIColor.systemOrange.cgColor
     }
     
     private func imageViewLayout(){
@@ -114,6 +112,7 @@ extension OnboardViewController {
             make.trailing.equalTo(view.snp.trailing).offset(-16.0)
         }
     }
+
 
 }
 
