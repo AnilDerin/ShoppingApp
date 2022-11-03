@@ -38,6 +38,9 @@ class LoginView: UIView {
          textField.layer.cornerRadius = 12
          textField.layer.borderWidth = 1
         textField.isHidden = true
+         textField.layer.borderWidth = 3
+         textField.isHidden = true
+         textField.layer.borderColor = UIColor.systemOrange.cgColor
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
         textField.leftView = leftView
         textField.leftViewMode = .always
