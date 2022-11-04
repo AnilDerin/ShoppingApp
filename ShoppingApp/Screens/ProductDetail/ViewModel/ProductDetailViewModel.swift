@@ -47,9 +47,6 @@ class ProductDetailViewModel {
     }
     
     func addToBasket(){
-        
-        
-        
         guard let id = product.id,
               let uid = defaults.string(forKey: "uid") else {return}
         

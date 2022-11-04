@@ -24,3 +24,12 @@ struct User: Encodable {
         return dictionary as NSDictionary
     }
 }
+
+extension User {
+    init(from dict: [String: Any]) {
+        username = dict["username"] as? String
+        email = dict["email"] as? String
+        pp = dict["pp"] as? String
+        basket = dict["basket"] as? [String]
+    }
+}
