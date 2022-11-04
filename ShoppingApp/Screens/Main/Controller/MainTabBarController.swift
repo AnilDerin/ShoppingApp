@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController {
         profileVC.title = "Profile"
 
         // Adding view controllers
-        self.setViewControllers([productVC, searchVC, profileVC], animated: false)
+        self.viewControllers = [productVC, searchVC, profileVC]
         
         // Setting view controller images
         guard let items = self.tabBar.items else {return}

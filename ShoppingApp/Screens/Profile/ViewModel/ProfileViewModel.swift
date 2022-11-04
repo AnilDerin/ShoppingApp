@@ -29,7 +29,6 @@ class ProfileViewModel {
         }
     }
     
-    
     func getCollectionData() {
         guard let uid = userDefaults.object(forKey: "uid") else {return}
         
@@ -45,10 +44,10 @@ class ProfileViewModel {
                 let data = document.data()
                 if let data = data {
                     self.userDict = data
-                    print(self.userDict?["email"] ?? "")
                 }
             }
         }
     }
+
 
 }
