@@ -47,10 +47,11 @@ class ProductDetailViewModel {
     }
     
     func addToBasket(){
+        
+        
+        
         guard let id = product.id,
               let uid = defaults.string(forKey: "uid") else {return}
-        
-        print(uid)
         
         db.collection("users").document(uid).updateData([
             "basket": FieldValue.arrayUnion([id])
