@@ -48,6 +48,7 @@ class ProductsViewController: UIViewController {
         
         viewModel.fetchProducts()
         
+        
         viewModel.changeHandler = { change in
             switch change {
             case .didFetchProducts:

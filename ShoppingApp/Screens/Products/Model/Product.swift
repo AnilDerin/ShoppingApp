@@ -15,6 +15,20 @@ struct Product: Codable {
     let productDescription, category: String?
     let image: String?
     let rating: Rating?
+    
+    var dictionary: [String: Any] {
+        return ["id": id ?? "",
+                "title": title ?? "",
+                "price": price ?? "",
+                "productDescription": productDescription ?? "",
+                "category": category ?? "",
+                "image": image ?? "",
+                "rating": rating?.rate ?? ""
+        ]
+    }
+    var nsDictionary: NSDictionary {
+        return dictionary as NSDictionary
+    }
 
     enum CodingKeys: String, CodingKey {
         case id, title, price

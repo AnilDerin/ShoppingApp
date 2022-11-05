@@ -51,6 +51,7 @@ class ProductsViewModel {
                 do {
                     let products = try JSONDecoder().decode([Product].self, from: response.data)
                     self.productsList = products
+                    self.addProductsToFirebaseFirestore(self.productsList)
                     self.isLoading = false
                 }catch {
                     self.changeHandler?(.didErrorOccurred(error))
@@ -59,10 +60,28 @@ class ProductsViewModel {
         }
     }
     
+    private func addProductsToFirebaseFirestore(_ products: [Product]?) {
+            guard let products = products else {
+                return
+            }
+            products.forEach { product in
+                do {
+                    let data = product.dictionary
+                    let id = product.id
+                    
+                    db.collection("products").document("\(id ?? 0)").setData(data) { error in
+                        
+                        if let error = error {
+                            self.changeHandler?(.didErrorOccurred(error))
+                        }
+                    }
+                }
+            }
+        }
+    
     func productForIndexPath(_ indexPath: IndexPath) -> Product? {
         productsList?[indexPath.row]
     }
     
-    // Add to basket
     
 }

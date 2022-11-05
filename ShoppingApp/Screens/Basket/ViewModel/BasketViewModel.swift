@@ -42,7 +42,7 @@ final class BasketViewModel {
 
 
             user.basket?.forEach({ productId in
-                self.db.collection("basket").document(productId).getDocument { (querySnapshot, err) in
+                self.db.collection("products").document(productId).getDocument { (querySnapshot, err) in
                     if let err = err {
                         completion(err)
                     } else {
