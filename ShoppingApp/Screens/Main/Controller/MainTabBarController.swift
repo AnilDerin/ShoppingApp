@@ -54,7 +54,7 @@ class MainTabBarController: UITabBarController {
     // MARK: - Methods
     @objc
     private func goToBasket(){
-        let basketVC = BasketViewController()
+        let basketVC = BasketViewController(viewModel: BasketViewModel())
         self.navigationController?.pushViewController(basketVC, animated: true)
     }
     

@@ -16,6 +16,7 @@ final class BasketViewModel {
     
     let db = Firestore.firestore()
     
+    
     var numberOfRows: Int {
         products.count
     }
@@ -28,16 +29,17 @@ final class BasketViewModel {
         
         products = []
         
-        guard let uid = defaults.object(forKey: "uid") else {
+        guard let uid = defaults.string(forKey: "uid") else {
             return
         }
         
-        db.collection("users").document(uid as! String).getDocument() { (querySnapshot, err) in
+        db.collection("users").document(uid).getDocument() { (querySnapshot, err) in
             guard let data = querySnapshot?.data() else {
                 return
             }
 
             let user = User(from: data)
+
 
             user.basket?.forEach({ productId in
                 self.db.collection("basket").document(productId).getDocument { (querySnapshot, err) in

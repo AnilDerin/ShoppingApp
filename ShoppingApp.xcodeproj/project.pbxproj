@@ -10,6 +10,7 @@
 		2C01BEC3290B22F200B08FE5 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */; };
 		2C189CA92910444F009B490B /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C189CA82910444F009B490B /* UIImageView+Extensions.swift */; };
 		2C3386202915D3DD00215A00 /* BasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C33861F2915D3DD00215A00 /* BasketViewModel.swift */; };
+		2C3386232915D6F300215A00 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3386222915D6F300215A00 /* BasketTableViewCell.swift */; };
 		2C3695CA29080E1400D264DC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695C929080E1400D264DC /* LoginViewController.swift */; };
 		2C3695CD2908124C00D264DC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3695CC2908124C00D264DC /* LoginView.swift */; };
 		2C4342D429094D470023BA0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C4342D329094D470023BA0C /* GoogleService-Info.plist */; };
@@ -60,6 +61,7 @@
 		2C01BEC2290B22F200B08FE5 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		2C189CA82910444F009B490B /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		2C33861F2915D3DD00215A00 /* BasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewModel.swift; sourceTree = "<group>"; };
+		2C3386222915D6F300215A00 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
 		2C3695C929080E1400D264DC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C3695CC2908124C00D264DC /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2C4342D329094D470023BA0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2C3386212915D6DB00215A00 /* BasketTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C3386222915D6F300215A00 /* BasketTableViewCell.swift */,
+			);
+			path = BasketTableViewCell;
+			sourceTree = "<group>";
+		};
 		2C3695C729080DF500D264DC /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +198,7 @@
 		2C4D130F290F18E80037B49D /* Basket */ = {
 			isa = PBXGroup;
 			children = (
+				2C3386212915D6DB00215A00 /* BasketTableViewCell */,
 				2C33861E2915D3D300215A00 /* ViewModel */,
 				2C4D1310290F18EC0037B49D /* Controller */,
 			);
@@ -675,6 +686,7 @@
 				2CA1E735290E83D6004FCAC0 /* Product.swift in Sources */,
 				2C4D1318290F1C590037B49D /* ProductDetailViewController.swift in Sources */,
 				2CA1E728290E7554004FCAC0 /* SearchViewController.swift in Sources */,
+				2C3386232915D6F300215A00 /* BasketTableViewCell.swift in Sources */,
 				2CC5359929069CDF0068B1BF /* SceneDelegate.swift in Sources */,
 				2C73FA2B2909BEB200EFAE88 /* MainTabBarController.swift in Sources */,
 				2C4D1312290F18FD0037B49D /* BasketViewController.swift in Sources */,

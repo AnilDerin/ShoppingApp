@@ -22,6 +22,8 @@ class ProductDetailViewModel {
     
     private var product: Product
     
+    private var products = [Product]()
+    
     var title: String? {
         product.title
     }
@@ -47,6 +49,10 @@ class ProductDetailViewModel {
     }
     
     func addToBasket(){
+        
+        products.append(product)
+        print(products)
+        
         guard let id = product.id,
               let uid = defaults.string(forKey: "uid") else {return}
         
