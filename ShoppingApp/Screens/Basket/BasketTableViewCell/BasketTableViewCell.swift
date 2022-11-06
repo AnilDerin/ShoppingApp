@@ -48,8 +48,8 @@ class BasketTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        productImageViewLayout()
         productTitleLabelLayout()
+        productImageViewLayout()
         productPriceLabelLayout()
     }
     
@@ -58,22 +58,22 @@ class BasketTableViewCell: UITableViewCell {
     }
     
     // MARK: - Layout
-    func productImageViewLayout(){
-        addSubview(productImageView)
-        
-        productImageView.snp.makeConstraints { make in
-            make.leading.equalTo(8.0)
-            make.centerY.equalTo(self.snp.centerY)
-            make.size.equalTo(128.0)
-        }
-    }
-    
     func productTitleLabelLayout(){
         addSubview(productTitleLabel)
         
         productTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top).offset(16.0)
-            make.leading.equalTo(productImageView.snp.leading).offset(16.0)
+            make.leading.equalTo(16.0)
+        }
+    }
+    
+    func productImageViewLayout(){
+        addSubview(productImageView)
+        
+        productImageView.snp.makeConstraints { make in
+            make.leading.equalTo(8.0)
+            make.top.equalTo(productTitleLabel.snp.bottom).offset(16.0)
+            make.size.equalTo(128.0)
         }
     }
     
