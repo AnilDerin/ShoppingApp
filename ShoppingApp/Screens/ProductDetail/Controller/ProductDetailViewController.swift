@@ -46,8 +46,12 @@ class ProductDetailViewController: UIViewController{
 
 // MARK: - ProductDetailDelegate
 extension ProductDetailViewController: ProductDetailDelegate, AlertPresentable {
+    func productAlreadyInBasket() {
+        showAlert(title: "Warning", message: "Product already in basket.",  handler: nil)
+    }
+    
     func didProductAddedToBasket() {
-        NotificationCenter().post(name: NSNotification.Name("didAnyCoinAddedToFavorites"), object: nil)
+        NotificationCenter().post(name: NSNotification.Name("didAnyProductAddedToBasket"), object: nil)
         showAlert(title: "Info", message: "Product added to your basket!",  handler: nil)
     }
 }

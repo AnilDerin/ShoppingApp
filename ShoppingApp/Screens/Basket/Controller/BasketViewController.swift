@@ -45,16 +45,16 @@ class BasketViewController: UIViewController, AlertPresentable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //isAnyProductAddedToBasket = true
+        isAnyProductAddedToBasket = true
         fetchProducts()
     }
     
     // MARK: - Methods
     private func fetchProducts() {
-//        if isAnyProductAddedToBasket {
-//            isAnyProductAddedToBasket = false
-//
-//        }
+       if isAnyProductAddedToBasket {
+           isAnyProductAddedToBasket = false
+
+        }
         viewModel.fetchProducts { error in
             if let error = error {
                 self.showError(error)
@@ -77,6 +77,8 @@ class BasketViewController: UIViewController, AlertPresentable {
             make.bottom.equalTo(view.snp.bottom)
             make.trailing.equalTo(view.snp.trailing)
         }
+        
+        tableView.rowHeight = 250
     }
     
     //MARK: - TableView Configuration
@@ -95,7 +97,9 @@ class BasketViewController: UIViewController, AlertPresentable {
 
 // MARK: - Tableview Delegate
 extension BasketViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - Tableview DataSource
@@ -113,7 +117,7 @@ extension BasketViewController: UITableViewDataSource {
             fatalError("Product not found.")
         }
         
-        cell.productTitle = product.title
+        cell.productTitle = "\(product.title?.maxLength(length: 32) ?? "")..."
         cell.productPrice = product.price
         cell.productImageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
             tableView.reloadRows(at: [indexPath], with: .none)
@@ -121,6 +125,6 @@ extension BasketViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
+
+// MARK: - Delegate

@@ -202,25 +202,6 @@ extension LoginView {
             passwordConfirmTextFieldLayout()
             finishAuthButtonLayout()
     }
-    
-// If found new background photo
-//    func assignbackground(){
-//          let background = UIImage(named: "doodle_new")
-//
-//          var imageView : UIImageView!
-//          imageView = UIImageView(frame: self.bounds)
-//          imageView.contentMode =  UIView.ContentMode.scaleAspectFill
-//          imageView.clipsToBounds = true
-//          imageView.image = background
-//        imageView.layer.opacity = 0.8
-//          imageView.center = self.center
-//          addSubview(imageView)
-//          sendSubviewToBack(imageView)
-//
-//        imageView.snp.makeConstraints { make in
-//            make.leading.trailing.top.bottom.equalToSuperview()
-//        }
-//      }
 }
 
 // MARK: - Methods

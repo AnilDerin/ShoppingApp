@@ -11,6 +11,7 @@ import FirebaseFirestore
 @objc
 protocol ProductDetailDelegate: AnyObject {
     @objc optional func didProductAddedToBasket()
+    func productAlreadyInBasket()
 }
 
 class ProductDetailViewModel {
@@ -22,14 +23,18 @@ class ProductDetailViewModel {
     
     private var product: Product
     
-    private var products = [Product]()
     
     var title: String? {
         product.title
     }
     
     var price: Double? {
-        product.price
+        get {
+            return product.price
+        }
+        set {
+            self.price = newValue
+        }
     }
     
     var rating: Double? {
@@ -50,16 +55,23 @@ class ProductDetailViewModel {
     
     func addToBasket(){
         
-        products.append(product)
-        print(products)
-        
         guard let id = product.id,
               let uid = defaults.string(forKey: "uid") else {return}
         
-        db.collection("users").document(uid).updateData([
-            "basket": FieldValue.arrayUnion([id])
-        ])
+        let docRef = db.collection("users").document(uid)
         
-        delegate?.didProductAddedToBasket?()
+        docRef.getDocument { document, error in
+            guard error == nil, let document = document, document.exists, let basket = document.get("basket") as? [String] else { return }
+            if basket.contains(where: {"\($0)" == "\(id)"}){
+                self.delegate?.productAlreadyInBasket()
+            } else {
+                docRef.updateData([
+                    "basket": FieldValue.arrayUnion(["\(id)"])
+                ])
+                
+                self.delegate?.didProductAddedToBasket?()
+            }
+        }
+
     }
 }
