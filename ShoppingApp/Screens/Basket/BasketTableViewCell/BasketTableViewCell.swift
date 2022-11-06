@@ -33,6 +33,9 @@ class BasketTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = 300
         return label
     }()
     

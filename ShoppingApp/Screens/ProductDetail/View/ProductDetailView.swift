@@ -50,8 +50,10 @@ class ProductDetailView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 14.0)
-        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = 300
         return label
     }()
     

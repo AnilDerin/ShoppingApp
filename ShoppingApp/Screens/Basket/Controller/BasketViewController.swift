@@ -168,7 +168,7 @@ extension BasketViewController: UITableViewDataSource {
             fatalError("Product not found.")
         }
         
-        cell.productTitle = "\(product.title?.maxLength(length: 32) ?? "")..."
+        cell.productTitle = product.title
         cell.productPrice = product.price
         cell.productImageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
             tableView.reloadRows(at: [indexPath], with: .none)
