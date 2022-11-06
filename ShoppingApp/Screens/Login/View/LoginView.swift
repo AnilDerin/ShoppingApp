@@ -120,18 +120,6 @@ extension LoginView {
         }
     }
     
-    private func usernameTextFieldLayout(){
-        addSubview(usernameTextField)
-        
-        usernameTextField.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.bottom).offset(64.0)
-            make.centerX.equalTo(self.snp.centerX)
-            make.height.equalTo(32.0)
-            make.leading.equalTo(32.0)
-            make.trailing.equalTo(-32.0)
-        }
-    }
-    
     private func emailTextFieldLayout(){
         addSubview(emailTextField)
             emailTextField.snp.makeConstraints { make in
@@ -170,7 +158,6 @@ extension LoginView {
     private func layout(){
             titleLabelLayout()
             segmentedControlLayout()
-            usernameTextFieldLayout()
             emailTextFieldLayout()
             passwordTextFieldLayout()
             finishAuthButtonLayout()

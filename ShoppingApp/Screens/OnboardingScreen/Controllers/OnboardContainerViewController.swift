@@ -17,8 +17,8 @@ class OnboardContainerViewController: UIViewController {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
         let page1 = OnboardViewController(heroImageName: "bags", titleText: "Welcome", descriptonText: "Swift Shop is an app that lets users to buy the items they want.")
-        let page2 = OnboardViewController(heroImageName: "eCommerce", titleText: "E-Commerce", descriptonText: "Swift Shop is an app that lets users to buy the items they want Ecommerce.")
-        let page3 = OnboardViewController(heroImageName: "cart", titleText: "Cart", descriptonText: "Swift Shop is an app that lets users to buy the items they want Cart.")
+        let page2 = OnboardViewController(heroImageName: "eCommerce", titleText: "E-Commerce", descriptonText: "Swift Shop aims to be the best E-Commerce experience on the market.")
+        let page3 = OnboardViewController(heroImageName: "cart", titleText: "Cart", descriptonText: "Swift Shop has a cart that users can add items and delete them.")
         
         
         pages.append(page1)
@@ -38,6 +38,8 @@ class OnboardContainerViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemOrange
+        
+        UserDefaults.standard.bool(forKey: "hasOnboarded")
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
@@ -115,6 +117,7 @@ extension OnboardContainerViewController: UIPageViewControllerDataSource {
 extension OnboardContainerViewController {
     @objc
     private func skipTapped(_ sender: UIButton){
+        UserDefaults.standard.set(true, forKey: "hasOnboarded")
         let loginVC = LoginViewController(viewModel: LoginViewModel())
         self.navigationController?.setViewControllers([loginVC], animated: true)
     }

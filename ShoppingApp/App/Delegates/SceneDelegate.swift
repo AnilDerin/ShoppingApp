@@ -63,6 +63,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let isLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         
+        print(isLoggedIn)
+        
         if isLoggedIn {
             window.rootViewController = navigationMainTabBarController
             window.makeKeyAndVisible()

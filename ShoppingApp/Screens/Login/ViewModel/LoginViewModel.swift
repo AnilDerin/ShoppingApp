@@ -23,6 +23,8 @@ class LoginViewModel {
     
     private let db = Firestore.firestore()
     
+    private let profileView = ProfileView()
+    
     func signUp(username:String ,email: String, password: String, completion: @escaping () -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
