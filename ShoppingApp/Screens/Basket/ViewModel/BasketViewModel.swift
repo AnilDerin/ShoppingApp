@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 final class BasketViewModel {
     
-    private var products = [Product]()
+     var products = [Product]()
     
     let defaults = UserDefaults.standard
     

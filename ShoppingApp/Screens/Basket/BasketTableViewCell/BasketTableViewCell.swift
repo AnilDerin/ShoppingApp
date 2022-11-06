@@ -134,6 +134,5 @@ extension BasketTableViewCell: BasketTableViewCellDelegate {
     @objc func didTapDecrementButton(cell: UITableViewCell){
         delegate?.didTapDecrementButton(cell: cell)
     }
-    
-    
+
 }
