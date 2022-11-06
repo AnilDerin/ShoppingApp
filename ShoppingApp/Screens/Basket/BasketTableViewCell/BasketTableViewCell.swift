@@ -8,13 +8,14 @@
 import UIKit
 
 protocol BasketTableViewCellDelegate: AnyObject {
-    func didTapIncrementButton(cell: UITableViewCell)
-    func didTapDecrementButton(cell: UITableViewCell)
+    func didTapStepper(stepper: UIStepper)
 }
 
 class BasketTableViewCell: UITableViewCell {
     
     weak var delegate: BasketTableViewCellDelegate?
+    
+    var observation: NSKeyValueObservation?
     
     var productTitle: String? {
         didSet {
@@ -27,6 +28,7 @@ class BasketTableViewCell: UITableViewCell {
             productPriceLabel.text = "\(productPrice ?? 0) $"
         }
     }
+    
 
     private(set) lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
@@ -40,28 +42,17 @@ class BasketTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var incrementButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("+", for: .normal)
-        button.tintColor = .systemBlue
-        button.titleLabel?.font = .systemFont(ofSize: 24.0)
-        button.addTarget(self, action: #selector(didTapIncrementButton), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var decrementButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("-", for: .normal)
-        button.tintColor = .systemBlue
-        button.titleLabel?.font = .systemFont(ofSize: 24.0)
-        button.addTarget(self, action: #selector(didTapDecrementButton), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var productPriceLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24.0)
         return label
+    }()
+    
+    private(set) lazy var stepper: UIStepper = {
+        let stepper = UIStepper()
+        stepper.minimumValue = 0
+        stepper.addTarget(self, action: #selector(didTapStepper), for: .valueChanged)
+        return stepper
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -70,8 +61,7 @@ class BasketTableViewCell: UITableViewCell {
         productImageViewLayout()
         productTitleLabelLayout()
         productPriceLabelLayout()
-        incrementButtonLayout()
-        decrementButtonLayout()
+        stepperLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -107,32 +97,20 @@ class BasketTableViewCell: UITableViewCell {
         }
     }
     
-    func decrementButtonLayout(){
-        addSubview(decrementButton)
+    func stepperLayout(){
+        contentView.addSubview(stepper)
         
-        decrementButton.snp.makeConstraints { make in
-            make.centerY.equalTo(incrementButton.snp.centerY)
-            make.leading.equalTo(incrementButton.snp.trailing).offset(8.0)
+        stepper.snp.makeConstraints { make in
+            make.leading.equalTo(productPriceLabel.snp.trailing).offset(-8.0)
+            make.centerY.equalTo(productPriceLabel.snp.centerY)
         }
     }
     
-    func incrementButtonLayout(){
-        addSubview(incrementButton)
-        
-        incrementButton.snp.makeConstraints { make in
-            make.centerY.equalTo(productPriceLabel.snp.centerY)
-            make.leading.equalTo(productPriceLabel.snp.trailing).offset(8.0)
-        }
-    }
 }
 
 extension BasketTableViewCell: BasketTableViewCellDelegate {
-    @objc func didTapIncrementButton(cell: UITableViewCell) {
-        delegate?.didTapDecrementButton(cell: cell)
-    }
-    
-    @objc func didTapDecrementButton(cell: UITableViewCell){
-        delegate?.didTapDecrementButton(cell: cell)
+    @objc func didTapStepper(stepper: UIStepper) {
+        delegate?.didTapStepper(stepper: stepper)
     }
 
 }

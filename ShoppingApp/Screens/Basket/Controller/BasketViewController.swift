@@ -19,7 +19,7 @@ class BasketViewController: UIViewController, AlertPresentable {
     
     private lazy var buyButton: UIButton = {
         let button = UIButton()
-        // button.addTarget(self, action: #selector(didTapFinishAuthButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didBuyButtonTapped), for: .touchUpInside)
         button.backgroundColor = .systemOrange
         button.layer.cornerRadius = 16
         return button
@@ -65,6 +65,18 @@ class BasketViewController: UIViewController, AlertPresentable {
     }
     
     // MARK: - Methods
+    func getTotalPrice() {
+        
+        if viewModel.products.count == 0 {
+            self.buyButton.setTitle("Buy", for: .normal)
+        }else {
+            let totalSum: Double = self.viewModel.products.map({$0.price ?? 0}).reduce(0, +)
+            let doubleStr = String(format: "%.2f", totalSum)
+            self.buyButton.setTitle("Buy \(doubleStr) $", for: .normal)
+        }
+        
+    }
+    
     private func fetchProducts() {
         if isAnyProductAddedToBasket {
             isAnyProductAddedToBasket = false
@@ -74,11 +86,8 @@ class BasketViewController: UIViewController, AlertPresentable {
             if let error = error {
                 self.showError(error)
             } else {
-                let totalSum: Double = self.viewModel.products.map({$0.price ?? 0}).reduce(0, +)
-                let doubleStr = String(format: "%.2f", totalSum)
-                self.buyButton.setTitle("Buy \(doubleStr) $", for: .normal)
+                self.getTotalPrice()
                 self.tableView.reloadData()
-                print("reloaded")
             }
         }
         
@@ -104,6 +113,8 @@ class BasketViewController: UIViewController, AlertPresentable {
     
     private func buyButtonLayout(){
         view.addSubview(buyButton)
+        
+        buyButton.setTitle("Buy", for: .normal)
         
         buyButton.snp.makeConstraints { make in
             make.bottom.equalTo(view.snp.bottom).offset(-32.0)
@@ -135,9 +146,9 @@ extension BasketViewController: UITableViewDelegate {
                 "basket": FieldValue.arrayRemove(["\(id)"])
             ])
             
-            
-//            viewModel.products.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
+            viewModel.products.remove(at: indexPath.row)
+            tableView.reloadData()
+            getTotalPrice()
         }
     }
 }
@@ -159,10 +170,60 @@ extension BasketViewController: UITableViewDataSource {
         
         cell.productTitle = "\(product.title?.maxLength(length: 32) ?? "")..."
         cell.productPrice = product.price
+        cell.stepper.value = product.price ?? 0
+        cell.stepper.stepValue = product.price ?? 0
+
+        cell.observation = cell.stepper.observe(\.value, options: [.new]) { (stepper, change) in
+             cell.productPrice = change.newValue!
+        }
+        
         cell.productImageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
             tableView.reloadRows(at: [indexPath], with: .none)
         }
         
         return cell
+    }
+}
+
+// MARK: - Actions
+extension BasketViewController {
+    @objc func didBuyButtonTapped(){
+        guard let uid = UserDefaults.standard.string(forKey: "uid") else {return}
+        let docRef = db.collection("users").document(uid)
+        
+        if viewModel.products.count > 0 {
+            
+            let buyAlert = UIAlertController(title: "Info", message: "Do you want to continue buying?", preferredStyle: UIAlertController.Style.alert)
+            
+            buyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                for product in self.viewModel.products {
+                    guard let productId = product.id else {return}
+                    docRef.updateData([
+                        "basket": FieldValue.arrayRemove(["\(productId)"])
+                    ])
+                }
+                self.viewModel.products.removeAll()
+                self.tableView.reloadData()
+                self.getTotalPrice()
+                self.navigationController?.popViewController(animated: true)
+            }))
+            
+            buyAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                return
+            }))
+            
+            present(buyAlert, animated: true, completion: nil)
+            
+            
+        }else {
+            showAlert(title: "Warning", message: "Please add an item to your basket.")
+        }
+    }
+}
+
+//MARK: - BasketViewCellDelegate
+extension BasketViewController: BasketTableViewCellDelegate {
+    func didTapStepper(stepper: UIStepper) {
+        print(stepper.value)
     }
 }
