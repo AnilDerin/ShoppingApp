@@ -59,16 +59,9 @@ class LoginViewController: UIViewController, AlertPresentable{
         viewModel.changeHandler = { change in
             switch change {
             case .didErrorOccured(let error):
-                print(error.localizedDescription)
+                self.showAlert(title: "Error", message: error.localizedDescription)
             case .didSignUpSuccessful:
-                self.activityView?.stopAnimating()
                 self.showAlert(title: "Sign Up Successful!")
-                self.loginView.emailTextField.text = ""
-                self.loginView.passwordTextField.text = ""
-                self.loginView.passwordConfirmTextField.text = ""
-                self.loginView.usernameTextField.text = ""
-                self.loginView.segmentedControl.selectedSegmentIndex = 0
-                self.didAuthChange(segmentedControl: self.loginView.segmentedControl)
                 self.view.backgroundColor = .white
                 
             }
@@ -118,16 +111,14 @@ extension LoginViewController: LoginViewDelegate {
             }
             
         case .signUp:
-            if self.loginView.passwordTextField.text == self.loginView.passwordConfirmTextField.text {
-                viewModel.signUp(username: username,email: email, password: password)
-                
-                self.showActivityIndicator()
-                self.view.backgroundColor = UIColor.white.withAlphaComponent(0.7)
-                self.loginView.segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
-            }else {
-                showAlert(title: "Password Error", message: "Passwords should match.")
+            viewModel.signUp(username: username, email: email, password: password){
+                self.loginView.emailTextField.text = ""
+                self.loginView.passwordTextField.text = ""
+                self.loginView.usernameTextField.text = ""
+                self.loginView.segmentedControl.selectedSegmentIndex = 0
+                self.didAuthChange(segmentedControl: self.loginView.segmentedControl)
             }
-
+            
         }
     }
     
@@ -138,10 +129,8 @@ extension LoginViewController: LoginViewDelegate {
         switch authType {
         case .signIn:
             self.loginView.usernameTextField.isHidden = true
-            self.loginView.passwordConfirmTextField.isHidden = true
         case .signUp:
             self.loginView.usernameTextField.isHidden = false
-            self.loginView.passwordConfirmTextField.isHidden = false
         }
     }
 }

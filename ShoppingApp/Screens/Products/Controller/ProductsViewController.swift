@@ -46,8 +46,8 @@ class ProductsViewController: UIViewController {
         
         setCollectionViewDelegate(self, andDataSource: self)
         
-        viewModel.fetchProducts()
         
+        fetchProducts()
         
         viewModel.changeHandler = { change in
             switch change {
@@ -82,6 +82,10 @@ class ProductsViewController: UIViewController {
         }
     }
     
+    func fetchProducts(){
+        viewModel.fetchProducts()
+    }
+    
     
 }
 
@@ -109,7 +113,6 @@ extension ProductsViewController: UICollectionViewDataSource {
         guard let product = viewModel.productForIndexPath(indexPath) else {
             fatalError("Product not found.")
         }
-        
             // Setting product image in cell
             cell.imageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
                 collectionView.reloadItems(at: [indexPath])

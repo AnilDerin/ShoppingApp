@@ -29,13 +29,12 @@ class ProductsViewModel {
     
     var changeHandler: ((ProductListChanges) -> Void)?
     
+    
     private(set) var productsList: [Product]? {
         didSet {
             self.changeHandler?(.didFetchProducts)
         }
     }
-    
-    var isLoading = true
     
     var numberOfItems: Int {
         productsList?.count ?? .zero
@@ -50,9 +49,8 @@ class ProductsViewModel {
             case .success(let response):
                 do {
                     let products = try JSONDecoder().decode([Product].self, from: response.data)
-                    self.productsList = products
+                        self.productsList = products
                     self.addProductsToFirebaseFirestore(self.productsList)
-                    self.isLoading = false
                 }catch {
                     self.changeHandler?(.didErrorOccurred(error))
                 }

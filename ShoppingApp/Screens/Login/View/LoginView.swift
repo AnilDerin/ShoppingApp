@@ -73,21 +73,6 @@ class LoginView: UIView {
         return textField
     }()
     
-    private(set) lazy var passwordConfirmTextField: UITextField = {
-        let textField = UITextField()
-         textField.placeholder = "Password"
-         textField.layer.cornerRadius = 12
-         textField.layer.borderWidth = 3
-         textField.isSecureTextEntry = true
-         textField.layer.borderColor = UIColor.systemOrange.cgColor
-         textField.clearsOnBeginEditing = false
-         textField.isHidden = true
-        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
-        textField.leftView = leftView
-        textField.leftViewMode = .always
-         return textField
-    }()
-    
     private(set) lazy var finishAuthButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign In", for: .normal)
@@ -170,18 +155,7 @@ extension LoginView {
             make.trailing.equalTo(-32.0)
         }
     }
-    
-    private func passwordConfirmTextFieldLayout(){
-        addSubview(passwordConfirmTextField)
-        
-        passwordConfirmTextField.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(16.0)
-            make.centerX.equalTo(self.snp.centerX)
-            make.height.equalTo(32.0)
-            make.leading.equalTo(32.0)
-            make.trailing.equalTo(-32.0)
-        }
-    }
+
     
     private func finishAuthButtonLayout(){
         addSubview(finishAuthButton)
@@ -199,7 +173,6 @@ extension LoginView {
             usernameTextFieldLayout()
             emailTextFieldLayout()
             passwordTextFieldLayout()
-            passwordConfirmTextFieldLayout()
             finishAuthButtonLayout()
     }
 }

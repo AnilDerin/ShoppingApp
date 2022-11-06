@@ -39,6 +39,8 @@ class ProfileViewController: UIViewController {
         view = profileView
         
         
+        
+        
         viewModel.getCollectionData()
         
         viewModel.changeHandler = { change in
@@ -53,10 +55,23 @@ class ProfileViewController: UIViewController {
                     self.profileView.image = UIImage(named: "profile")
                 }else {
                     
+                    let activityIndicator = UIActivityIndicatorView(style: .medium)
+                    activityIndicator.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+                    activityIndicator.hidesWhenStopped = true
+                    activityIndicator.startAnimating()
+                    self.profileView.profileImageView.addSubview(activityIndicator)
+                    activityIndicator.snp.makeConstraints { make in
+                        make.center.equalTo(self.profileView.profileImageView.snp.center)
+                    }
+                    
                     guard let url = URL(string: userDict["pp"] as! String) else { return }
                     
                     UIImage.loadFrom(url: url, completion: { image in
-                        self.profileView.image = image
+                        DispatchQueue.main.async {
+                            activityIndicator.stopAnimating()
+                            self.profileView.image = image
+                        }
+                        
                     })
                 }
                 
@@ -158,16 +173,16 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             storageRef.putData(imageData, metadata: metaData){ metaData, error in
                 if error == nil, metaData != nil {
                     storageRef.downloadURL { url, error in
-                        db.collection("users").document(uid).updateData(["pp" : url?.absoluteString]) { err in
+                        db.collection("users").document(uid).updateData(["pp" : url?.absoluteString ?? ""]) { err in
                             if let err = err {
                                 print("Error updating document: \(err)")
                             } else {
-                                self.showAlert(title: "Success", message: "Profile picture successfully changed.")
+                                print("success")
                             }
                         }
                     }
                 } else {
-                    print(error?.localizedDescription)
+                    self.showAlert(title: "Error", message: error?.localizedDescription ?? "")
                 }
             }
         }

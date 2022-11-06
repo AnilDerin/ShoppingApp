@@ -7,15 +7,9 @@
 
 import UIKit
 
-protocol BasketTableViewCellDelegate: AnyObject {
-    func didTapStepper(stepper: UIStepper)
-}
 
 class BasketTableViewCell: UITableViewCell {
     
-    weak var delegate: BasketTableViewCellDelegate?
-    
-    var observation: NSKeyValueObservation?
     
     var productTitle: String? {
         didSet {
@@ -48,20 +42,12 @@ class BasketTableViewCell: UITableViewCell {
         return label
     }()
     
-    private(set) lazy var stepper: UIStepper = {
-        let stepper = UIStepper()
-        stepper.minimumValue = 0
-        stepper.addTarget(self, action: #selector(didTapStepper), for: .valueChanged)
-        return stepper
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         productImageViewLayout()
         productTitleLabelLayout()
         productPriceLabelLayout()
-        stepperLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -93,24 +79,10 @@ class BasketTableViewCell: UITableViewCell {
         
         productPriceLabel.snp.makeConstraints { make in
             make.bottom.equalTo(self.snp.bottom).offset(-16.0)
-            make.trailing.equalTo(self.snp.trailing).offset(-96.0)
+            make.trailing.equalTo(self.snp.trailing).offset(-24.0)
         }
     }
     
-    func stepperLayout(){
-        contentView.addSubview(stepper)
-        
-        stepper.snp.makeConstraints { make in
-            make.leading.equalTo(productPriceLabel.snp.trailing).offset(-8.0)
-            make.centerY.equalTo(productPriceLabel.snp.centerY)
-        }
-    }
     
 }
 
-extension BasketTableViewCell: BasketTableViewCellDelegate {
-    @objc func didTapStepper(stepper: UIStepper) {
-        delegate?.didTapStepper(stepper: stepper)
-    }
-
-}

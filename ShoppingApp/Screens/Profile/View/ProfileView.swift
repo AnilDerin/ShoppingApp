@@ -42,7 +42,7 @@ class ProfileView: UIView {
         return label
     }()
     
-    private lazy var profileImageView: UIImageView = {
+    private(set) lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didImageTapped(tapGestureRecognizer:)))
         imageView.isUserInteractionEnabled = true

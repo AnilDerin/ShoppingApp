@@ -15,8 +15,6 @@ enum LoginViewModelChange {
     case didSignUpSuccessful
 }
 
-
-
 class LoginViewModel {
     
     private let defaults = UserDefaults.standard
@@ -25,7 +23,7 @@ class LoginViewModel {
     
     private let db = Firestore.firestore()
     
-    func signUp(username:String ,email: String, password: String){
+    func signUp(username:String ,email: String, password: String, completion: @escaping () -> Void){
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 self.changeHandler?(.didErrorOccured(error))
@@ -40,15 +38,14 @@ class LoginViewModel {
                 
                 self.defaults.set(id, forKey: "uid")
                 
-                try self.db.collection("users").document(id).setData(data) { error in
+                self.db.collection("users").document(id).setData(data) { error in
                     if let error = error {
                         self.changeHandler?(.didErrorOccured(error))
                     } else {
                         self.changeHandler?(.didSignUpSuccessful)
+                        completion()
                     }
                 }
-            } catch {
-                self.changeHandler?(.didErrorOccured(error))
             }
         }
     }

@@ -170,13 +170,6 @@ extension BasketViewController: UITableViewDataSource {
         
         cell.productTitle = "\(product.title?.maxLength(length: 32) ?? "")..."
         cell.productPrice = product.price
-        cell.stepper.value = product.price ?? 0
-        cell.stepper.stepValue = product.price ?? 0
-
-        cell.observation = cell.stepper.observe(\.value, options: [.new]) { (stepper, change) in
-             cell.productPrice = change.newValue!
-        }
-        
         cell.productImageView.kf.setImage(with: URL(string: "\(product.image ?? "")")) { _ in
             tableView.reloadRows(at: [indexPath], with: .none)
         }
@@ -221,9 +214,3 @@ extension BasketViewController {
     }
 }
 
-//MARK: - BasketViewCellDelegate
-extension BasketViewController: BasketTableViewCellDelegate {
-    func didTapStepper(stepper: UIStepper) {
-        print(stepper.value)
-    }
-}
