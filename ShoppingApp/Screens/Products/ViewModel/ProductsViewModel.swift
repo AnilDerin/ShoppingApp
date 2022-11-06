@@ -23,6 +23,8 @@ enum ProductListChanges {
 
 class ProductsViewModel {
     
+    // MARK: - Properties
+    
     weak var delegate: BasketProductDelegate?
     
     private let db = Firestore.firestore()

@@ -9,6 +9,8 @@ import UIKit
 
 class OnboardViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         return label
@@ -28,6 +30,8 @@ class OnboardViewController: UIViewController {
     let titleText: String
     let heroImageName: String
     let descriptionText: String
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,7 @@ class OnboardViewController: UIViewController {
     }
 }
 
+// MARK: - Layout
 extension OnboardViewController {
     
     private func titleLabelStyle(){

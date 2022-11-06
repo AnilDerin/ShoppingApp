@@ -10,6 +10,8 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController, AlertPresentable{
     
+    // MARK: - Properties
+    
     private let viewModel: LoginViewModel
     
     var activityView: UIActivityIndicatorView?
@@ -43,6 +45,8 @@ class LoginViewController: UIViewController, AlertPresentable{
         return view
     }()
     
+    // MARK: - Lifecycle
+    
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -56,6 +60,7 @@ class LoginViewController: UIViewController, AlertPresentable{
         super.viewDidLoad()
         title = "Auth"
         
+        // Handling data
         viewModel.changeHandler = { change in
             switch change {
             case .didErrorOccured(let error):
@@ -77,6 +82,7 @@ class LoginViewController: UIViewController, AlertPresentable{
     }
 }
 
+// MARK: - Activity Indicator
 extension LoginViewController {
     func showActivityIndicator(){
         activityView = UIActivityIndicatorView(style: .large)
@@ -95,6 +101,7 @@ extension LoginViewController {
     }
 }
 
+// MARK: - Delegate
 extension LoginViewController: LoginViewDelegate {
     func didTapFinishAuthButton(sender: UIButton) {
         

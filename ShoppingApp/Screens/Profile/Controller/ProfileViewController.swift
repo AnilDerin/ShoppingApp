@@ -12,9 +12,9 @@ import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     
-    private var viewModel: ProfileViewModel
+    // MARK: - Properties
     
-    var myData: Data?
+    private var viewModel: ProfileViewModel
     
     private lazy var profileView: ProfileView = {
         let view = ProfileView()
@@ -37,9 +37,6 @@ class ProfileViewController: UIViewController {
         
         title = "Profile"
         view = profileView
-        
-        
-        
         
         viewModel.getCollectionData()
         
@@ -84,6 +81,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
+// MARK: - Delegate
 extension ProfileViewController: ProfileViewDelegate, AlertPresentable {
     func didImageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         showImagePickerController()

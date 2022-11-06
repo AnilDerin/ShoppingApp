@@ -10,8 +10,11 @@ import Lottie
 
 class SplashViewController: UIViewController {
     
+    // MARK: - Properties
+    
     private var animationView: LottieAnimationView?
 
+    //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

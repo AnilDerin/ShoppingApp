@@ -9,10 +9,10 @@ import UIKit
 import Kingfisher
 
 class ProductsViewController: UIViewController {
+    // MARK: - Props
     
     private var viewModel: ProductsViewModel
     
-    // MARK: - Props
     private let cellInset: CGFloat = 8.0
     private let cellMultiplier: CGFloat = 0.5
     private var cellDimension: CGFloat {
@@ -49,6 +49,7 @@ class ProductsViewController: UIViewController {
         
         fetchProducts()
         
+        // Handling data
         viewModel.changeHandler = { change in
             switch change {
             case .didFetchProducts:
@@ -59,7 +60,7 @@ class ProductsViewController: UIViewController {
         }
     }
     
-    
+    // MARK: - CollectionView Layout
     private func setupCollectionViewLayout(){
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in

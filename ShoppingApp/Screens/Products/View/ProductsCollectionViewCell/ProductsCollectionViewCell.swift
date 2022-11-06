@@ -10,6 +10,9 @@ import Cosmos
 import Lottie
 
 class ProductsCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Properties
+    
     var title: String? {
         didSet {
             titleLabel.text = title
@@ -68,6 +71,8 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Inşt
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -85,6 +90,8 @@ class ProductsCollectionViewCell: UICollectionViewCell {
         gradientLayer.frame = bounds
     }
     
+    
+    // MARK: - Layout
     
     private func layout() {
         
