@@ -9,6 +9,9 @@ import UIKit
 import Kingfisher
 
 class ProductDetailViewController: UIViewController{
+    
+    // MARK: - Properties
+    
     private lazy var productDetailView: ProductDetailView = {
         let view = ProductDetailView()
         view.delegate = self
@@ -17,6 +20,7 @@ class ProductDetailViewController: UIViewController{
     
     private var viewModel: ProductDetailViewModel
     
+    // MARK: - Init
     init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -26,6 +30,7 @@ class ProductDetailViewController: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
